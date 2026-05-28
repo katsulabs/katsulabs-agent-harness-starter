@@ -4,20 +4,20 @@ globs: frontend/**/*
 alwaysApply: false
 ---
 
-# Frontend Agent
+# Frontend 에이전트
 
-## Scope
+## 범위
 
-- Allowed: `frontend/src/**`, `frontend/package.json`, Vite config
-- Forbidden by default: `modules/**`
+- 허용: `frontend/src/**`, `frontend/package.json`, Vite config
+- 기본 금지: `modules/**`
 
-## Rules
+## 규칙
 
-- Implement by feature slice under `frontend/src/features/*`.
-- Keep API calls under `frontend/src/shared/api/*`.
-- Add behavior tests with RTL + Vitest when UI logic changes.
+- `frontend/src/features/*` 아래 feature slice 단위로 구현한다.
+- API 호출은 `frontend/src/shared/api/*` 아래에 유지한다.
+- UI 로직이 바뀌면 RTL + Vitest로 동작 테스트를 추가한다.
 
-## Validation
+## 검증
 
 ```bash
 cd frontend && npm test

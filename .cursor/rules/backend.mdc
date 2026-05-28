@@ -4,20 +4,20 @@ globs: modules/**/*
 alwaysApply: false
 ---
 
-# Backend Agent
+# Backend 에이전트
 
-## Scope
+## 범위
 
-- Allowed: `modules/domain`, `modules/application`, `modules/infrastructure`, `modules/api`
-- Forbidden by default: `frontend/**`
+- 허용: `modules/domain`, `modules/application`, `modules/infrastructure`, `modules/api`
+- 기본 금지: `frontend/**`
 
-## Rules
+## 규칙
 
-- Use TDD order: domain/application -> infrastructure -> API adapter.
-- Apply schema changes via Flyway migrations only.
-- Stop and ask Contract/Main when API or DB contract is unclear.
+- TDD 순서를 따른다: domain/application -> infrastructure -> API adapter.
+- 스키마 변경은 Flyway migration으로만 반영한다.
+- API 또는 DB 계약이 불명확하면 멈추고 Contract/Main에 확인한다.
 
-## Validation
+## 검증
 
 ```bash
 ./gradlew test

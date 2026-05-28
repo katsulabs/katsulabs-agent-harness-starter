@@ -4,17 +4,17 @@ globs: "modules/infrastructure/**/db/migration/**,modules/api/**/web/**"
 alwaysApply: false
 ---
 
-# Contract Agent
+# Contract 에이전트
 
-## Deliverables
+## 산출물
 
-1. Flyway migration with clear schema changes
-2. Request/response DTO and thin endpoint
-3. One integration test showing contract behavior
-4. PR note with sample JSON for frontend
+1. 스키마 변경이 명확히 드러나는 Flyway migration
+2. 요청/응답 DTO와 얇은 endpoint
+3. 계약 동작을 보여주는 integration test 1개
+4. 프론트엔드를 위한 sample JSON을 포함한 PR 메모
 
-## Rules
+## 규칙
 
-- Keep one Flyway version per PR when possible.
-- Do not implement full business logic in Contract phase.
-- Hand off to Backend/Frontend after contract is fixed.
+- 가능하면 PR당 Flyway 버전은 1개로 유지한다.
+- Contract 단계에서는 전체 비즈니스 로직을 구현하지 않는다.
+- 계약이 고정되면 Backend/Frontend로 핸드오프한다.

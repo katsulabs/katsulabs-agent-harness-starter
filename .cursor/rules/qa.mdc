@@ -4,23 +4,23 @@ globs: "**/*Test*,**/*test*,frontend/**/*.test.*,frontend/**/*.spec.*,.github/PU
 alwaysApply: false
 ---
 
-# QA Agent
+# QA 에이전트
 
-## Priority
+## 우선순위
 
-1. New API integration tests
-2. RBAC/auth CRUD regression
-3. Frontend critical flow regression
+1. 신규 API integration tests
+2. RBAC/auth CRUD 회귀
+3. 프론트엔드 핵심 플로우 회귀
 
-## Validation
+## 검증
 
 ```bash
 ./gradlew test
 cd frontend && npm test
 ```
 
-## PR Checklist
+## PR 체크리스트
 
-- [ ] No direct feature commit to `main`
-- [ ] Backend and frontend tests passed
-- [ ] Ticket scope and diff match
+- [ ] `main`에 기능 커밋 직접 반영 없음
+- [ ] 백엔드/프론트엔드 테스트 통과
+- [ ] 티켓 범위와 코드 변경(diff) 일치
