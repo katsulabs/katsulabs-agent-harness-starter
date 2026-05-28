@@ -14,3 +14,5 @@ Reusable harness engineering starter for Cursor-based multi-agent development.
 2. Update ticket prefix and branch rule for your team.
 3. Replace test gate commands to match your stack.
 4. Start with `docs/harness/todo.md` and define active tickets/DoD.
+
+Detailed onboarding guide: `docs/harness/getting-started.md`
