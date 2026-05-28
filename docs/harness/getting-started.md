@@ -1,4 +1,4 @@
-# Getting Started Guide
+# 시작 가이드
 
 이 문서는 `katsulabs-agent-harness-starter`를 새 프로젝트에 적용하는 빠른 가이드입니다.
 
@@ -15,10 +15,10 @@
 
 ## 2) 첫 운영 세팅 (Day 1)
 
-- `orchestrator.mdc`에서 dispatch 규칙과 태그를 확인합니다.
+- `orchestrator.mdc`에서 분배 규칙과 태그를 확인합니다.
 - `agent-hierarchy.md`에서 역할 경계(Contract/BE/FE/QA)를 합의합니다.
 - `workflow.md`에서 Hook fallback 절차를 팀에 공유합니다.
-- PR 템플릿 hard gate를 mandatory 체크로 운영합니다.
+- PR 템플릿 하드 게이트를 필수 체크로 운영합니다.
 
 ## 3) 첫 구현 요청 처리 표준
 
@@ -26,7 +26,7 @@
 
 - [ ] 티켓/DoD 확인 (`docs/harness/todo.md`)
 - [ ] worktree/브랜치 준비
-- [ ] 태그 기반 Sub-agent dispatch
+- [ ] 태그 기반 Sub-agent 분배
 - [ ] Hook 비활성 시 fallback 절차 전환
 
 권장 태그:
@@ -68,6 +68,6 @@
 ## 7) 온보딩 체크리스트
 
 - [ ] 팀원 전원이 `docs/harness/reference-baseline.md`를 읽음
-- [ ] 샘플 티켓 1개를 dispatch로 시뮬레이션
+- [ ] 샘플 티켓 1개를 분배로 시뮬레이션
 - [ ] Hook fallback 수동 전환 리허설 1회
 - [ ] 첫 주 KPI 수집 시작

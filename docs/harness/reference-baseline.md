@@ -1,24 +1,24 @@
-# Harness Baseline
+# 하네스 기본 기준
 
 새 프로젝트 기본 하네스 기준입니다.
 
-## Core
+## 핵심 기준
 
 - main 보호 + worktree 강제
-- no-ff merge
+- no-ff 머지
 - 역할 분리 (Main/Contract/Backend/Frontend/QA)
 - 테스트 게이트 (backend + frontend)
 
-## First Turn Checklist
+## 첫 턴 체크리스트
 
-- [ ] ticket/DoD 확인
+- [ ] 티켓/DoD 확인
 - [ ] worktree/branch 준비
-- [ ] 태그 기반 dispatch
-- [ ] hook fallback 필요 여부 확인
+- [ ] 태그 기반 분배
+- [ ] Hook fallback 필요 여부 확인
 
-## PR Hard Gates
+## PR 하드 게이트
 
-- [ ] ticket 목적 명시
+- [ ] 티켓 목적 명시
 - [ ] 역할 경계 위반 없음
 - [ ] backend/frontend 테스트 결과 첨부
 - [ ] DB 변경 시 호환성 메모 포함
