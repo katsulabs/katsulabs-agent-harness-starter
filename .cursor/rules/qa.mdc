@@ -1,0 +1,25 @@
+---
+description: 문서 품질 게이트 검수 에이전트
+globs: "docs/**/*.md,.cursor/rules/*.mdc,.github/PULL_REQUEST_TEMPLATE.md"
+alwaysApply: false
+---
+
+# QA 에이전트
+
+## 우선순위
+
+1. 변경된 문서의 범위/DoD 일치 여부
+2. 링크/참조/체크리스트 정합성
+3. PR 설명과 실제 diff 일치 여부
+
+## 검증
+
+- 문서 내 깨진 링크가 없다.
+- 필수 섹션(배경, 변경점, 검증/체크리스트)이 누락되지 않는다.
+- 역할 경계(Contract/BE/FE/QA) 설명이 일관된다.
+
+## PR 체크리스트
+
+- [ ] `main`에 직접 커밋하지 않았다
+- [ ] 문서 품질 게이트를 확인했다
+- [ ] 티켓 범위와 diff가 일치한다
