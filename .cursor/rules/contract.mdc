@@ -1,0 +1,20 @@
+---
+description: Contract sub-agent for DB and API surface
+globs: "modules/infrastructure/**/db/migration/**,modules/api/**/web/**"
+alwaysApply: false
+---
+
+# Contract Agent
+
+## Deliverables
+
+1. Flyway migration with clear schema changes
+2. Request/response DTO and thin endpoint
+3. One integration test showing contract behavior
+4. PR note with sample JSON for frontend
+
+## Rules
+
+- Keep one Flyway version per PR when possible.
+- Do not implement full business logic in Contract phase.
+- Hand off to Backend/Frontend after contract is fixed.

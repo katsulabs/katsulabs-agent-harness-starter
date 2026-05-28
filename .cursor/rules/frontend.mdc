@@ -1,0 +1,25 @@
+---
+description: Frontend sub-agent for React and Vitest
+globs: frontend/**/*
+alwaysApply: false
+---
+
+# Frontend Agent
+
+## Scope
+
+- Allowed: `frontend/src/**`, `frontend/package.json`, Vite config
+- Forbidden by default: `modules/**`
+
+## Rules
+
+- Implement by feature slice under `frontend/src/features/*`.
+- Keep API calls under `frontend/src/shared/api/*`.
+- Add behavior tests with RTL + Vitest when UI logic changes.
+
+## Validation
+
+```bash
+cd frontend && npm test
+cd frontend && npm run build
+```

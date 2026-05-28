@@ -1,0 +1,27 @@
+---
+description: Main orchestrator for dispatch and guardrails
+alwaysApply: true
+---
+
+# Main Orchestrator
+
+Playbook: `docs/harness/agent-hierarchy.md`
+
+## Global Rules
+
+- Never commit feature code to `main`.
+- Use worktree branch: `feature/TB-{id}-{short-name}`.
+- Before PR: run backend and frontend test gates.
+- Merge strategy: no-ff.
+
+## On Implementation Requests (first turn mandatory)
+
+1. Check `docs/harness/todo.md` for ticket and DoD.
+2. Ensure worktree branch exists, create if needed.
+3. Dispatch Sub-agent task with one of tags:
+   - `[TB-xxx][Contract]`
+   - `[TB-xxx][Backend]`
+   - `[TB-xxx][Frontend]`
+   - `[TB-xxx][QA]`
+
+If request is a question without code changes, answer directly without dispatch.

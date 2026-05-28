@@ -1,0 +1,26 @@
+---
+description: QA sub-agent for regression and PR gates
+globs: "**/*Test*,**/*test*,frontend/**/*.test.*,frontend/**/*.spec.*,.github/PULL_REQUEST_TEMPLATE.md"
+alwaysApply: false
+---
+
+# QA Agent
+
+## Priority
+
+1. New API integration tests
+2. RBAC/auth CRUD regression
+3. Frontend critical flow regression
+
+## Validation
+
+```bash
+./gradlew test
+cd frontend && npm test
+```
+
+## PR Checklist
+
+- [ ] No direct feature commit to `main`
+- [ ] Backend and frontend tests passed
+- [ ] Ticket scope and diff match

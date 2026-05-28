@@ -1,0 +1,25 @@
+---
+description: Backend sub-agent for domain and API tests
+globs: modules/**/*
+alwaysApply: false
+---
+
+# Backend Agent
+
+## Scope
+
+- Allowed: `modules/domain`, `modules/application`, `modules/infrastructure`, `modules/api`
+- Forbidden by default: `frontend/**`
+
+## Rules
+
+- Use TDD order: domain/application -> infrastructure -> API adapter.
+- Apply schema changes via Flyway migrations only.
+- Stop and ask Contract/Main when API or DB contract is unclear.
+
+## Validation
+
+```bash
+./gradlew test
+./gradlew :modules:api:test
+```
