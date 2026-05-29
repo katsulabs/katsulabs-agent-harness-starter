@@ -10,6 +10,11 @@
 | [getting-started.md](./getting-started.md) | 새 프로젝트 적용 5분 가이드 |
 | [todo.md](./todo.md) | 티켓/DoD/보류 항목 |
 
+## 검증 스킬
+
+`skills/` 디렉토리에 기본 검증 절차가 스킬로 정리되어 있습니다.
+상세 목록과 실행 순서: [`skills/README.md`](../../skills/README.md)
+
 ## Cursor 규칙 형식
 
 `.cursor/rules/*.mdc` 파일만 규칙으로 적용됩니다.
