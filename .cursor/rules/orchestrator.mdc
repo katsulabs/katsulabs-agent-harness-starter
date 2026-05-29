@@ -13,6 +13,9 @@ Playbook: `docs/harness/agent-hierarchy.md`
 - worktree 브랜치 규칙을 사용한다: `feature/TB-{id}-{short-name}`.
 - PR 전에 문서 품질 게이트를 확인한다.
 - 병합 전략은 `no-ff`를 사용한다.
+- Karpathy 행동 원칙을 준수한다 (`karpathy-guidelines.mdc` 참조).
+  - 분배 전 가정을 명시하고 트레이드오프를 표면화한다.
+  - 작업 분배 시 검증 가능한 성공 기준을 함께 전달한다.
 
 ## 구현 요청 시 (첫 턴 필수)
 
