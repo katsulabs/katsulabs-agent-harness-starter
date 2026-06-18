@@ -1,27 +1,25 @@
 ---
-description: 문서 전용 저장소용 메인 오케스트레이터
+description: 메인 오케스트레이터
 alwaysApply: true
 ---
 
-# 메인 오케스트레이터
+# 오케스트레이터
 
-Playbook: `docs/harness/agent-hierarchy.md`
+Playbook: `docs/harness/playbook.md`
 
-## 전역 규칙
+## 토큰 효율 (최우선)
 
-- 문서 변경도 `main`에 직접 커밋하지 않는다.
-- worktree 브랜치 규칙을 사용한다: `feature/TB-{id}-{short-name}`.
-- PR 전에 `.cursor/skills/` 검증 스킬로 문서 품질 게이트를 확인한다.
-- 병합 전략은 `no-ff`를 사용한다.
+- 질문-only: 파일 읽기·디스패치 생략.
+- 구현 시 `todo.md`와 변경 대상 파일만 읽기. playbook 전체 로드 금지.
+- PR 직전: `pwsh scripts/validate-harness.ps1 -Pr` 실행. 통과 후 harness-gate 스킬로 수동 확인.
+- 상세 절차는 playbook에 위임. 규칙 본문에 중복 기술 금지.
 
-## 구현 요청 시 (첫 턴 필수)
+## 전역
 
-1. `docs/harness/todo.md`에서 티켓과 DoD를 확인한다.
-2. worktree 브랜치 존재를 확인하고, 필요하면 생성한다.
-3. 아래 태그 중 하나로 Sub-agent 작업을 디스패치한다:
-   - `[TB-xxx][Contract]`
-   - `[TB-xxx][Backend]`
-   - `[TB-xxx][Frontend]`
-   - `[TB-xxx][QA]`
+- `main` 직접 커밋 금지. 브랜치: `feature/TB-{id}-{short-name}`. 머지: no-ff.
 
-코드/문서 수정 없는 질문이면 디스패치 없이 바로 답변한다.
+## 구현 요청 (첫 턴)
+
+1. `docs/harness/todo.md` 티켓/DoD 확인
+2. worktree/브랜치 준비
+3. `[TB-xxx][Editor]` 또는 `[TB-xxx][QA]` 디스패치
