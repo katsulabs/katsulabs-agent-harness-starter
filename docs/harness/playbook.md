@@ -7,16 +7,18 @@
 | Agent | 역할 | 범위 |
 |-------|------|------|
 | Main | 분해, worktree, 분배 | `docs/**` |
-| Editor | 문서·규칙·PR 템플릿 편집 | `docs/**`, `.cursor/**`, `.github/**` |
-| QA | PR 게이트 검증 | `scripts/validate-harness.ps1`, CI |
+| Editor | 문서·규칙·PR 템플릿 | `docs/**`, `.cursor/**`, `.github/**` |
+| Backend | 서버·API·비즈니스 로직 | `modules/**`, `backend/**`, `server/**`, `api/**` |
+| Frontend | UI·클라이언트 | `frontend/**`, `client/**`, `apps/web/**` |
+| QA | PR 게이트 검증 | `validate-harness.ps1`, CI |
 
-태그: `[TB-xxx][Editor]`, `[TB-xxx][QA]`
+태그: `[TB-xxx][Editor]`, `[TB-xxx][Backend]`, `[TB-xxx][Frontend]`, `[TB-xxx][QA]`
 
 ## 워크플로
 
 - `main` 직접 커밋 금지 · worktree 1개/기능 · no-ff 머지
 - 흐름: worktree → 구현 → **validate-harness.ps1** → PR → CI green → 머지
-- 병렬: 독립 브랜치 + 경로 비중첩 + 범위 고정. 불명확하면 Editor → QA 순차.
+- 병렬: 독립 브랜치 + 경로 비중첩(`Backend` vs `Frontend`) + 범위 고정. 불명확하면 순차.
 
 ## 운영 게이트 (강제)
 
@@ -57,6 +59,7 @@ GitHub branch protection: `main`에 status check **`validate`** + PR 필수 (활
 | 지연 검증 | 스크립트는 PR 직전만 |
 | 수술적 변경 | 요청 범위 밖 diff 금지 |
 | 규칙 슬림 | alwaysApply는 orchestrator만 |
+| 좁은 globs | Backend/Frontend는 코드 경로에서만 로드 |
 
 ## 표기
 

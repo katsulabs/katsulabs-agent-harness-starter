@@ -1,52 +1,43 @@
 # 확장 가이드
 
-문서 하네스를 코드 프로젝트로 확장할 때 참조한다.
+코드 저장소에 하네스를 적용할 때 참조한다. **Backend/Frontend 규칙은 스타터에 포함**되어 있으며 globs만 팀 구조에 맞게 조정한다.
 
-## 언제 확장하는가
+## 규칙 구성 (기본)
 
-- `modules/**`, `frontend/**` 등 소스 코드가 생길 때
-- DB migration, API DTO 계약이 필요할 때
+| 규칙 | globs | 용도 |
+|------|-------|------|
+| orchestrator | alwaysApply | 전역·분배 |
+| editor | `docs/**`, `.cursor/**`, `.github/**` | 문서 |
+| backend | `modules/**`, `backend/**`, `server/**`, `api/**` | 백엔드 코드 |
+| frontend | `frontend/**`, `client/**`, `apps/web/**` | 프론트 코드 |
+| qa | `.github/**` | PR 게이트 |
 
-## 역할 확장 (토큰 예산 유지)
+**토큰 원칙:** 코드 편집 시 해당 영역 규칙만 로드. Editor는 문서 전용.
 
-| 단계 | 역할 | globs (조건부만) |
-|------|------|------------------|
-| 1 | Editor (유지) | `docs/**`, `.cursor/**` |
-| 2 | +Contract | `db/**`, `**/dto/**`, `openapi.*` |
-| 3 | +Backend | `modules/**`, `backend/**` |
-| 4 | +Frontend | `frontend/**`, `src/**` |
-| 5 | QA (유지) | `.github/**` |
+## 추가 확장 (선택)
 
-**원칙:** alwaysApply 규칙 추가 금지. 역할마다 **좁은 globs**만 사용.
+| 역할 | globs | 시점 |
+|------|-------|------|
+| Contract | `db/**`, `**/dto/**`, `openapi.*` | API/DB 계약 필요 시 |
 
 ## 검증 확장
 
-`scripts/validate-harness.ps1`에 프로젝트 게이트를 추가한다.
+`scripts/validate-harness.ps1`에 프로젝트 테스트를 추가한다.
 
 ```powershell
-# 예: backend 테스트
 if (Test-Path 'package.json') { npm test }
 if (Test-Path 'pom.xml') { mvn test -q }
 ```
 
-PR 템플릿에 테스트 게이트 체크박스를 추가한다.
+PR 템플릿에 backend/frontend 테스트 체크박스를 추가한다.
 
 ## CI 확장
 
-`.github/workflows/harness-gate.yml`에 테스트 job을 **별도 job**으로 추가 (실패 시 머지 차단).
+`harness-gate.yml`에 테스트 job을 별도 job으로 추가.
 
-## 마이그레이션 체크리스트
+## 커스터마이징 체크리스트
 
-- [ ] playbook 역할 테이블 갱신
-- [ ] editor globs에서 코드 경로 분리
+- [ ] `backend.mdc` / `frontend.mdc` globs를 실제 경로에 맞게 수정
+- [ ] playbook 역할 테이블 동기화
 - [ ] validate 스크립트에 테스트 단계 추가
 - [ ] PR 템플릿에 테스트 항목 추가
-- [ ] extending.md 내용을 팀 스택에 맞게 커스터마이즈
-
-## 토큰 예산
-
-확장 시에도 다음을 유지한다.
-
-- playbook 단일 참조
-- 검증 스크립트/CI로 강제, 스킬 문서는 슬림 유지
-- 역할 규칙은 **필요한 것만** 추가 (5개 이상 비권장)
