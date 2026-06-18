@@ -27,7 +27,7 @@
 | PR 직전 | `pwsh scripts/validate-harness.ps1 -Pr` | PR 생성 금지 |
 | CI | `.github/workflows/harness-gate.yml` | 머지 금지 |
 
-GitHub branch protection: `main`에 harness-gate status check 필수.
+GitHub branch protection: `main`에 status check **`validate`** 필수 (Pro/Public만). Private Free는 `operations.md` 참고.
 
 ## 샘플 티켓
 
