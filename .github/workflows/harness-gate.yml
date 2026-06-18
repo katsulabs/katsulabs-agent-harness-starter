@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run harness-gate
+      - name: Harness validate
         shell: pwsh
         run: ./scripts/validate-harness.ps1
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Project eval
+        shell: pwsh
+        run: ./scripts/run-eval.ps1

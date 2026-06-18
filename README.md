@@ -1,14 +1,14 @@
 # katsulabs-agent-harness-starter
 
-토큰 효율 + 운영 강제력 Cursor 멀티 에이전트 하네스.
+3세대 Agent Engineering 템플릿 — Rules + Skills + Runtime(eval/CI) + MCP 스켈레톤.
 
 ## 포함
 
-- `.cursor/rules` — orchestrator, editor, **contract**, backend, frontend, qa
-- `scripts/validate-harness.ps1` — 자동 게이트
-- `.github/workflows/harness-gate.yml` — CI
-- `.cursor/hooks.json` — stop 시 validate
-- `docs/harness/playbook.md` — 에이전트 단일 참조
+- **Ambient**: `AGENTS.md`, `docs/harness/playbook.md`
+- **Rules**: orchestrator, editor, contract, backend, frontend, qa
+- **Skills**: harness-gate, pr-workflow, worktree-setup
+- **Runtime**: `validate-harness.ps1`, `run-eval.ps1`, CI, hooks
+- **MCP**: `.cursor/mcp.json.example`
 
 ## 시작
 
@@ -17,4 +17,4 @@ pwsh scripts/validate-harness.ps1
 pwsh scripts/install-githooks.ps1
 ```
 
-온보딩: `docs/harness/getting-started.md` · 확장: `docs/harness/extending.md` · Cloud: `AGENTS.md`
+채택: `docs/harness/TEMPLATE.md` · 기여: `CONTRIBUTING.md`

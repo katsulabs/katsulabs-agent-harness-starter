@@ -1,66 +1,63 @@
 # Playbook
 
-에이전트 운영 단일 참조 문서. **필요한 섹션만 읽는다.**
+에이전트 운영 단일 참조. **필요한 섹션만 읽는다.** 계약: `AGENTS.md`
 
 ## 역할
 
 | Agent | 역할 | 범위 |
 |-------|------|------|
 | Main | 분해, worktree, 분배 | `docs/**` |
-| Editor | 문서·규칙·PR 템플릿 | `docs/**`, `.cursor/**`, `.github/**` |
+| Editor | 문서·규칙·PR | `docs/**`, `.cursor/**`, `.github/**` |
 | Contract | API·DB·DTO 계약 | `db/**`, `**/dto/**`, `**/openapi.*`, `contracts/**`, `api-spec/**` |
-| Backend | 서버·API·비즈니스 로직 | `modules/**`, `backend/**`, `server/**`, `api/**` |
+| Backend | 서버·API·로직 | `modules/**`, `backend/**`, `server/**`, `api/**` |
 | Frontend | UI·클라이언트 | `frontend/**`, `client/**`, `apps/web/**` |
-| QA | PR 게이트 검증 | `validate-harness.ps1`, CI |
+| QA | PR·eval 게이트 | `validate-harness.ps1`, `run-eval.ps1`, CI |
 
-태그: `[TB-xxx][Editor]`, `[TB-xxx][Contract]`, `[TB-xxx][Backend]`, `[TB-xxx][Frontend]`, `[TB-xxx][QA]`
+태그: `[TB-xxx][Editor|Contract|Backend|Frontend|QA]`
 
 ## 워크플로
 
-- `main` 직접 커밋 금지 · worktree 1개/기능 · no-ff 머지
-- 흐름: worktree → 구현 → **validate-harness.ps1** → PR → CI green → 머지
-- 병렬: 독립 브랜치 + 경로 비중첩 + **계약 고정**. 불명확하면 Contract → Backend → Frontend → QA 순차.
+- `main` 직접 커밋 금지 · worktree 1개/기능 · no-ff
+- 흐름: worktree → 구현 → validate → run-eval → PR → CI → 머지
+- 순차: Contract → Backend/Frontend(병렬 가능) → QA. 불명확하면 순차.
 
-## 운영 게이트 (강제)
+## Worktree
 
-| 단계 | 명령 | 실패 시 |
-|------|------|---------|
-| 로컬 | `pwsh scripts/validate-harness.ps1` | 수정 후 재실행 |
-| pre-commit | `.githooks/pre-commit` (설치: `install-githooks.ps1`) | 커밋 차단 |
-| PR 직전 | `pwsh scripts/validate-harness.ps1 -Pr` | PR 생성 금지 |
-| CI | `.github/workflows/harness-gate.yml` | 머지 금지 |
+스킬: `worktree-setup` · 경로: `../.worktrees/TB-{id}-{name}` · `.gitignore` 등록
 
-GitHub branch protection: `main`에 status check **`validate`** + PR 필수 (활성).
+## 운영 게이트
 
-## 샘플 티켓
+| 단계 | 명령 |
+|------|------|
+| 하네스 | `pwsh scripts/validate-harness.ps1` |
+| eval | `pwsh scripts/run-eval.ps1` |
+| PR | `validate-harness.ps1 -Pr` + 스킬 `pr-workflow` |
+| CI | `validate` + `test` jobs |
 
-`docs/harness/examples/sample-ticket.md` · PR 본문: `examples/sample-pr.md`
+branch protection: `validate`, `test` (권장)
+
+## 3세대 레이어
+
+| 레이어 | 위치 |
+|--------|------|
+| Ambient | `AGENTS.md`, 이 playbook |
+| Rules | `.cursor/rules/*.mdc` |
+| Skills | `.cursor/skills/*` (PR, worktree, harness-gate) |
+| Runtime | hooks, scripts, CI |
+| MCP | `.cursor/mcp.json` (example 참고) |
+
+## 샘플
+
+- 문서: `examples/sample-ticket.md`
+- 코드: `examples/sample-ticket-code.md` · 핸드오프: `examples/contract-handoff.md`
 
 ## Hook fallback
 
-1. 태그 유지, Main이 다음 에이전트 분배
-2. 직전 산출물(범위 메모, 검증 결과) 전달
-3. QA 전 validate-harness.ps1 재실행
-4. PR에 fallback 사유 기록
+태그 유지 → 산출물 전달 → validate+eval 재실행 → PR에 사유 기록
 
-## KPI (선택)
+## 토큰 효율
 
-| 지표 | 수집 |
-|------|------|
-| PR Lead Time | GitHub Insights |
-| Reopen Rate | reopened PR / 전체 PR |
-| Handoff Failure | PR 코멘트 `#handoff-fail` |
-
-## 토큰 효율 원칙
-
-| 원칙 | 실행 |
-|------|------|
-| 최소 로드 | `todo.md` + 변경 파일만 읽기 |
-| 단일 참조 | 상세는 이 playbook에만 유지 |
-| 지연 검증 | 스크립트는 PR 직전만 |
-| 수술적 변경 | 요청 범위 밖 diff 금지 |
-| 규칙 슬림 | alwaysApply는 orchestrator만 |
-| 좁은 globs | Contract/Backend/Frontend는 해당 경로에서만 로드 |
+`todo.md`+변경 파일만 로드 · Rules 최소 · Skills는 PR/worktree 시만 · 수술적 diff
 
 ## 표기
 

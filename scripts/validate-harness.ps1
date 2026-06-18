@@ -122,7 +122,7 @@ if (Test-Path $playbookPath) {
 $prTpl = Join-Path $root '.github/PULL_REQUEST_TEMPLATE.md'
 if (Test-Path $prTpl) {
     $tpl = Get-Content -LiteralPath $prTpl -Raw
-    foreach ($section in @('## 요약', '## 검증 계획', '## 하드 게이트')) {
+    foreach ($section in @('## 요약', '## 검증 계획', '## 테스트 게이트', '## 하드 게이트')) {
         if ($tpl -notmatch [regex]::Escape($section)) {
             Fail "PR_TEMPLATE: 필수 섹션 누락 — $section"
         }
@@ -151,6 +151,24 @@ if (-not (Test-Path $skill)) { Fail "MISSING: .cursor/skills/harness-gate/SKILL.
 
 $workflow = Join-Path $root '.github/workflows/harness-gate.yml'
 if (-not (Test-Path $workflow)) { Fail "MISSING: .github/workflows/harness-gate.yml" }
+elseif ((Get-Content $workflow -Raw) -notmatch 'test:') { Fail "CI: test job 누락" }
+
+# --- 6b. 3세대 필수 파일 ---
+foreach ($f in @(
+    'AGENTS.md', 'CONTRIBUTING.md', 'docs/harness/TEMPLATE.md',
+    'scripts/run-eval.ps1', '.cursor/mcp.json.example',
+    'docs/harness/examples/sample-ticket-code.md'
+)) {
+    if (-not (Test-Path (Join-Path $root $f))) { Fail "MISSING: $f" }
+}
+$agents = Get-Content (Join-Path $root 'AGENTS.md') -Raw
+if ($agents -match '문서 전용') { Fail "AGENTS.md: 코드 저장소 계약으로 갱신 필요" }
+
+foreach ($skill in @('harness-gate', 'pr-workflow', 'worktree-setup')) {
+    if (-not (Test-Path (Join-Path $root ".cursor/skills/$skill/SKILL.md"))) {
+        Fail "MISSING: .cursor/skills/$skill/SKILL.md"
+    }
+}
 
 # --- 7. PR 모드 ---
 if ($Pr) {

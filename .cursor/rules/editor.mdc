@@ -9,4 +9,4 @@ alwaysApply: false
 - 범위: `docs/**`, `.cursor/**`, `.github/**`
 - 용어·범위 변경 시 관련 파일만 동기화. 전체 문서 스캔 금지.
 - 수술적 변경: 요청 범위 밖 수정 금지.
-- PR 직전: `pwsh scripts/validate-harness.ps1 -Pr` 통과 필수.
+- PR 직전: `validate-harness.ps1 -Pr` + `run-eval.ps1`.
