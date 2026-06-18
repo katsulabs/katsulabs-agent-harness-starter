@@ -13,7 +13,7 @@
 | TB-001 | 문서 한글화, 스킬 추가, 하네스 절감 |
 | TB-002 | 토큰 효율 (규칙·스킬·playbook 통합) |
 | TB-003 | validate 스크립트, CI, qa 규칙, AGENTS.md |
-| TB-004 | 스크립트 보강, hooks, extending, 샘플, KPI |
+| TB-005 | CI main 트리거, operations.md, pre-commit 수정, PR #5 머지 |
 
 ## 보류
 
