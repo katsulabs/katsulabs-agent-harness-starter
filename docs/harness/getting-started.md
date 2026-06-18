@@ -14,11 +14,33 @@
 - [ ] `pwsh scripts/validate-harness.ps1` 통과
 - [ ] `examples/sample-ticket.md` 플로우 시뮬레이션
 
-## GitHub 운영 (권장)
+## GitHub 운영
+
+### Private 무료 플랜 (현재)
+
+branch protection **미지원**. 대체 게이트:
+
+- 로컬: `install-githooks.ps1` (pre-commit)
+- CI: `harness-gate` workflow (`main`·`feature/**` push, PR)
+- 흐름: feature 브랜치 → PR → merge (no-ff)
+
+### Pro 또는 Public 저장소
 
 1. Settings → Branches → `main` protection
-2. Require status check: **harness-gate**
+2. Require status check: **`validate`**
 3. Require PR before merge
+
+```bash
+gh api -X PUT repos/OWNER/REPO/branches/main/protection \
+  --input - <<'EOF'
+{
+  "required_status_checks": { "strict": true, "contexts": ["validate"] },
+  "enforce_admins": true,
+  "required_pull_request_reviews": { "required_approving_review_count": 0 },
+  "restrictions": null
+}
+EOF
+```
 
 ## 커스터마이징
 
