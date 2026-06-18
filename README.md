@@ -4,7 +4,7 @@
 
 ## 포함
 
-- `.cursor/rules` — orchestrator, editor, qa
+- `.cursor/rules` — orchestrator, editor, **backend**, **frontend**, qa
 - `scripts/validate-harness.ps1` — 자동 게이트
 - `.github/workflows/harness-gate.yml` — CI
 - `.cursor/hooks.json` — stop 시 validate

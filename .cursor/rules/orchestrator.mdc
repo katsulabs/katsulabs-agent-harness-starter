@@ -22,4 +22,4 @@ Playbook: `docs/harness/playbook.md`
 
 1. `docs/harness/todo.md` 티켓/DoD 확인
 2. worktree/브랜치 준비
-3. `[TB-xxx][Editor]` 또는 `[TB-xxx][QA]` 디스패치
+3. `[TB-xxx][Editor]` · `[TB-xxx][Backend]` · `[TB-xxx][Frontend]` · `[TB-xxx][QA]` 디스패치

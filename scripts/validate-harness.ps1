@@ -92,16 +92,27 @@ if (Test-Path $mdcDir) {
     }
 }
 
-# --- 4. editor ↔ playbook 범위 ---
+# --- 4. 역할 규칙 ↔ playbook 범위 ---
 $playbookPath = Join-Path $root 'docs/harness/playbook.md'
-$editorPath = Join-Path $root '.cursor/rules/editor.mdc'
-if ((Test-Path $playbookPath) -and (Test-Path $editorPath)) {
+$roleScopes = @{
+    'editor.mdc'    = @('docs/**', '.cursor/**', '.github/**')
+    'backend.mdc'   = @('modules/**', 'backend/**', 'server/**', 'api/**')
+    'frontend.mdc'  = @('frontend/**', 'client/**', 'apps/web/**')
+}
+if (Test-Path $playbookPath) {
     $pb = Get-Content -LiteralPath $playbookPath -Raw
-    $ed = Get-Content -LiteralPath $editorPath -Raw
-    foreach ($scope in @('docs/**', '.cursor/**', '.github/**')) {
-        $esc = [regex]::Escape($scope)
-        if ($pb -notmatch $esc -or $ed -notmatch $esc) {
-            Fail "SCOPE_SYNC: editor.mdc ↔ playbook.md — '$scope' 불일치"
+    foreach ($entry in $roleScopes.GetEnumerator()) {
+        $mdcPath = Join-Path $mdcDir $entry.Key
+        if (-not (Test-Path $mdcPath)) {
+            Fail "MISSING: .cursor/rules/$($entry.Key)"
+            continue
+        }
+        $mdc = Get-Content -LiteralPath $mdcPath -Raw
+        foreach ($scope in $entry.Value) {
+            $esc = [regex]::Escape($scope)
+            if ($pb -notmatch $esc -or $mdc -notmatch $esc) {
+                Fail "SCOPE_SYNC: $($entry.Key) ↔ playbook.md — '$scope' 불일치"
+            }
         }
     }
 }
@@ -124,11 +135,13 @@ if (-not (Test-Path $playbookPath)) {
     Fail "MISSING: docs/harness/playbook.md"
 } else {
     $pb = Get-Content -LiteralPath $playbookPath -Raw
-    foreach ($role in @('Main', 'Editor', 'QA')) {
+    foreach ($role in @('Main', 'Editor', 'Backend', 'Frontend', 'QA')) {
         if ($pb -notmatch $role) { Fail "CONSISTENCY: playbook.md에 '$role' 없음" }
     }
-    foreach ($term in @('Contract', 'Backend', 'Frontend')) {
-        if ($pb -match "\b$term\b") { Fail "CONSISTENCY: playbook.md에 구 역할 '$term' 잔존" }
+    foreach ($mdc in @('backend.mdc', 'frontend.mdc')) {
+        if (-not (Test-Path (Join-Path $mdcDir $mdc))) {
+            Fail "MISSING: .cursor/rules/$mdc"
+        }
     }
 }
 
