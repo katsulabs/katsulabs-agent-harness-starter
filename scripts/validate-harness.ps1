@@ -96,6 +96,7 @@ if (Test-Path $mdcDir) {
 $playbookPath = Join-Path $root 'docs/harness/playbook.md'
 $roleScopes = @{
     'editor.mdc'    = @('docs/**', '.cursor/**', '.github/**')
+    'contract.mdc'  = @('db/**', '**/dto/**', '**/openapi.*', 'contracts/**', 'api-spec/**')
     'backend.mdc'   = @('modules/**', 'backend/**', 'server/**', 'api/**')
     'frontend.mdc'  = @('frontend/**', 'client/**', 'apps/web/**')
 }
@@ -135,10 +136,10 @@ if (-not (Test-Path $playbookPath)) {
     Fail "MISSING: docs/harness/playbook.md"
 } else {
     $pb = Get-Content -LiteralPath $playbookPath -Raw
-    foreach ($role in @('Main', 'Editor', 'Backend', 'Frontend', 'QA')) {
+    foreach ($role in @('Main', 'Editor', 'Contract', 'Backend', 'Frontend', 'QA')) {
         if ($pb -notmatch $role) { Fail "CONSISTENCY: playbook.md에 '$role' 없음" }
     }
-    foreach ($mdc in @('backend.mdc', 'frontend.mdc')) {
+    foreach ($mdc in @('contract.mdc', 'backend.mdc', 'frontend.mdc')) {
         if (-not (Test-Path (Join-Path $mdcDir $mdc))) {
             Fail "MISSING: .cursor/rules/$mdc"
         }
