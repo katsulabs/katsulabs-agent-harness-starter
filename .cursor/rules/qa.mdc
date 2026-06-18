@@ -14,6 +14,13 @@ alwaysApply: false
 
 ## 검증
 
+PR 전 `.cursor/skills/` 검증 스킬을 아래 순서로 실행한다:
+
+1. doc-link-validation
+2. cursor-rule-validation
+3. doc-consistency
+4. pr-quality-gate
+
 - 문서 내 깨진 링크가 없다.
 - 필수 섹션(배경, 변경점, 검증/체크리스트)이 누락되지 않는다.
 - 역할 경계(Contract/BE/FE/QA) 설명이 일관된다.

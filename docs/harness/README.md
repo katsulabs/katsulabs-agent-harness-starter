@@ -5,10 +5,20 @@
 | 문서 | 내용 |
 |------|------|
 | [agent-hierarchy.md](./agent-hierarchy.md) | 역할 분리, 분배, 병렬 기준 |
-| [workflow.md](./workflow.md) | worktree, PR, CI/CD, 예외 흐름 |
-| [reference-baseline.md](./reference-baseline.md) | 기본값 레퍼런스 |
-| [getting-started.md](./getting-started.md) | 새 프로젝트 적용 5분 가이드 |
+| [workflow.md](./workflow.md) | worktree, PR, Hook fallback |
+| [getting-started.md](./getting-started.md) | 새 프로젝트 적용 가이드 |
 | [todo.md](./todo.md) | 티켓/DoD/보류 항목 |
+
+## 검증 스킬
+
+문서 품질 게이트는 `.cursor/skills/`에 정의되어 있습니다.
+
+| 스킬 | 설명 |
+|------|------|
+| doc-link-validation | 문서 링크/참조 유효성 |
+| cursor-rule-validation | `.mdc` 규칙 형식 |
+| doc-consistency | 용어/구조 일관성 |
+| pr-quality-gate | PR 하드 게이트 |
 
 ## Cursor 규칙 형식
 

@@ -11,7 +11,7 @@ Playbook: `docs/harness/agent-hierarchy.md`
 
 - 문서 변경도 `main`에 직접 커밋하지 않는다.
 - worktree 브랜치 규칙을 사용한다: `feature/TB-{id}-{short-name}`.
-- PR 전에 문서 품질 게이트를 확인한다.
+- PR 전에 `.cursor/skills/` 검증 스킬로 문서 품질 게이트를 확인한다.
 - 병합 전략은 `no-ff`를 사용한다.
 
 ## 구현 요청 시 (첫 턴 필수)
