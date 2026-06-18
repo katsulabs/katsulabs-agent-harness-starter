@@ -1,32 +1,11 @@
 ---
-description: 문서 품질 게이트 검수 에이전트
-globs: "docs/**/*.md,.cursor/rules/*.mdc,.github/PULL_REQUEST_TEMPLATE.md"
+description: PR 게이트 검증
+globs: ".github/**"
 alwaysApply: false
 ---
 
-# QA 에이전트
+# QA
 
-## 우선순위
-
-1. 변경된 문서의 범위/DoD 일치 여부
-2. 링크/참조/체크리스트 정합성
-3. PR 설명과 실제 diff 일치 여부
-
-## 검증
-
-PR 전 `.cursor/skills/` 검증 스킬을 아래 순서로 실행한다:
-
-1. doc-link-validation
-2. cursor-rule-validation
-3. doc-consistency
-4. pr-quality-gate
-
-- 문서 내 깨진 링크가 없다.
-- 필수 섹션(배경, 변경점, 검증/체크리스트)이 누락되지 않는다.
-- 역할 경계(Contract/BE/FE/QA) 설명이 일관된다.
-
-## PR 체크리스트
-
-- [ ] `main`에 직접 커밋하지 않았다
-- [ ] 문서 품질 게이트를 확인했다
-- [ ] 티켓 범위와 diff가 일치한다
+- PR 직전: `pwsh scripts/validate-harness.ps1 -Pr` 통과 필수.
+- CI harness-gate green 확인 후 PR 생성.
+- 실패 시 수정·재실행. 스킬 `harness-gate`는 체크리스트 참조용.

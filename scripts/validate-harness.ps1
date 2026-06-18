@@ -1,0 +1,158 @@
+#Requires -Version 5.1
+<#
+.SYNOPSIS
+  Harness Gate — 링크·규칙·일관성·템플릿 자동 검증
+.EXAMPLE
+  pwsh scripts/validate-harness.ps1
+.EXAMPLE
+  pwsh scripts/validate-harness.ps1 -Pr
+#>
+param([switch]$Pr)
+
+$ErrorActionPreference = 'Stop'
+$root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
+Set-Location $root
+
+$failures = [System.Collections.Generic.List[string]]::new()
+
+function Fail([string]$msg) { $failures.Add($msg) }
+
+$staleRefs = @(
+    'agent-hierarchy.md', 'workflow.md', 'reference-baseline.md',
+    'doc-link-validation', 'cursor-rule-validation', 'doc-consistency', 'pr-quality-gate'
+)
+
+# --- 1. 링크 ---
+$mdFiles = Get-ChildItem -Recurse -Filter '*.md' -File |
+    Where-Object { $_.FullName -notmatch '[\\/]\.git[\\/]' }
+
+$linkPattern = '\[[^\]]*\]\(([^)]+)\)'
+foreach ($file in $mdFiles) {
+    $dir = $file.DirectoryName
+    $content = Get-Content -LiteralPath $file.FullName -Raw
+    foreach ($m in [regex]::Matches($content, $linkPattern)) {
+        $target = $m.Groups[1].Value.Trim()
+        if ($target -match '^(https?://|mailto:|#)') { continue }
+        $target = $target -replace '#.*$', ''
+        if ([string]::IsNullOrWhiteSpace($target)) { continue }
+        $resolved = if ($target.StartsWith('/')) {
+            Join-Path $root ($target.TrimStart('/'))
+        } else {
+            Join-Path $dir $target
+        }
+        $resolved = [System.IO.Path]::GetFullPath($resolved)
+        if (-not (Test-Path -LiteralPath $resolved)) {
+            $rel = $file.FullName.Substring($root.Length + 1)
+            Fail "BROKEN_LINK: $rel -> $target"
+        }
+    }
+}
+
+# --- 2. 구 참조·playbook 포맷 ---
+foreach ($file in $mdFiles) {
+    $rel = $file.FullName.Substring($root.Length + 1)
+    $content = Get-Content -LiteralPath $file.FullName -Raw
+    foreach ($stale in $staleRefs) {
+        if ($content -match [regex]::Escape($stale)) {
+            Fail "STALE_REF: $rel — '$stale' 참조"
+        }
+    }
+    if ($rel -eq 'docs/harness/playbook.md') {
+        if ($content -match '(\r?\n){3,}') {
+            Fail "FORMAT: playbook.md — 연속 빈 줄 3개 이상"
+        }
+        if (($content -split '(?m)^# ').Count -gt 2) {
+            Fail "FORMAT: playbook.md — h1은 1개만"
+        }
+    }
+}
+
+# --- 3. 규칙 (.mdc) ---
+$mdcDir = Join-Path $root '.cursor/rules'
+$alwaysApplyTrue = @()
+if (Test-Path $mdcDir) {
+    foreach ($mdc in Get-ChildItem -Path $mdcDir -Filter '*.mdc') {
+        $text = Get-Content -LiteralPath $mdc.FullName -Raw
+        $name = $mdc.Name
+        if (-not $text.StartsWith("---`n") -and -not $text.StartsWith("---`r`n")) {
+            Fail "MDC_FORMAT: $name — front-matter 누락"
+            continue
+        }
+        if ($text -notmatch '(?m)^description:\s*.+') { Fail "MDC_FIELD: $name — description 누락" }
+        if ($text -notmatch '(?m)^alwaysApply:\s*(true|false)') { Fail "MDC_FIELD: $name — alwaysApply 누락" }
+        if ($text -match '(?m)^alwaysApply:\s*true') {
+            $alwaysApplyTrue += $name
+            if ($text -notmatch '(?m)^#\s') { Fail "MDC_BODY: $name — 제목 누락" }
+        } else {
+            if ($text -notmatch '(?m)^globs:\s*.+') { Fail "MDC_FIELD: $name — globs 누락" }
+        }
+    }
+    if ($alwaysApplyTrue.Count -ne 1 -or $alwaysApplyTrue[0] -ne 'orchestrator.mdc') {
+        Fail "MDC_POLICY: alwaysApply:true는 orchestrator.mdc만 (현재: $($alwaysApplyTrue -join ', '))"
+    }
+}
+
+# --- 4. editor ↔ playbook 범위 ---
+$playbookPath = Join-Path $root 'docs/harness/playbook.md'
+$editorPath = Join-Path $root '.cursor/rules/editor.mdc'
+if ((Test-Path $playbookPath) -and (Test-Path $editorPath)) {
+    $pb = Get-Content -LiteralPath $playbookPath -Raw
+    $ed = Get-Content -LiteralPath $editorPath -Raw
+    foreach ($scope in @('docs/**', '.cursor/**', '.github/**')) {
+        $esc = [regex]::Escape($scope)
+        if ($pb -notmatch $esc -or $ed -notmatch $esc) {
+            Fail "SCOPE_SYNC: editor.mdc ↔ playbook.md — '$scope' 불일치"
+        }
+    }
+}
+
+# --- 5. PR 템플릿 ---
+$prTpl = Join-Path $root '.github/PULL_REQUEST_TEMPLATE.md'
+if (Test-Path $prTpl) {
+    $tpl = Get-Content -LiteralPath $prTpl -Raw
+    foreach ($section in @('## 요약', '## 검증 계획', '## 하드 게이트')) {
+        if ($tpl -notmatch [regex]::Escape($section)) {
+            Fail "PR_TEMPLATE: 필수 섹션 누락 — $section"
+        }
+    }
+} else {
+    Fail "MISSING: .github/PULL_REQUEST_TEMPLATE.md"
+}
+
+# --- 6. 일관성 ---
+if (-not (Test-Path $playbookPath)) {
+    Fail "MISSING: docs/harness/playbook.md"
+} else {
+    $pb = Get-Content -LiteralPath $playbookPath -Raw
+    foreach ($role in @('Main', 'Editor', 'QA')) {
+        if ($pb -notmatch $role) { Fail "CONSISTENCY: playbook.md에 '$role' 없음" }
+    }
+    foreach ($term in @('Contract', 'Backend', 'Frontend')) {
+        if ($pb -match "\b$term\b") { Fail "CONSISTENCY: playbook.md에 구 역할 '$term' 잔존" }
+    }
+}
+
+$skill = Join-Path $root '.cursor/skills/harness-gate/SKILL.md'
+if (-not (Test-Path $skill)) { Fail "MISSING: .cursor/skills/harness-gate/SKILL.md" }
+
+$workflow = Join-Path $root '.github/workflows/harness-gate.yml'
+if (-not (Test-Path $workflow)) { Fail "MISSING: .github/workflows/harness-gate.yml" }
+
+# --- 7. PR 모드 ---
+if ($Pr) {
+    $branch = (git branch --show-current 2>$null)
+    if ($branch -eq 'main') { Fail "PR_BRANCH: main에서 PR 불가" }
+    $commits = git log main..HEAD --oneline 2>$null
+    if (-not $commits) { Fail "PR_COMMITS: main 대비 커밋 없음" }
+}
+
+# --- 결과 ---
+$mdcCount = @(Get-ChildItem $mdcDir -Filter '*.mdc' -ErrorAction SilentlyContinue).Count
+if ($failures.Count -eq 0) {
+    Write-Host "PASS: harness-gate ($($mdFiles.Count) md, $mdcCount mdc)"
+    exit 0
+}
+
+Write-Host "FAIL: harness-gate ($($failures.Count) issues)"
+foreach ($f in $failures) { Write-Host "  - $f" }
+exit 1

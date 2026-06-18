@@ -1,0 +1,16 @@
+name: harness-gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: ['feature/**', 'cursor/**']
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run harness-gate
+        shell: pwsh
+        run: ./scripts/validate-harness.ps1
