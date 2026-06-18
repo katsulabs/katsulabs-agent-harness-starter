@@ -1,17 +1,16 @@
-## Summary
+## 요약
 
-<!-- what changed and why -->
+<!-- 무엇을 왜 변경했는지 -->
 
-## Test Plan
+## 검증 계획
 
-- [ ] backend test gate passed
-- [ ] frontend test gate passed
-- [ ] no direct feature commit to `main`
+- [ ] 문서 링크/참조가 유효함
+- [ ] `.cursor/rules/*.mdc` 형식이 유효함
+- [ ] `main`에 기능 커밋 없음
 
-## Harness Hard Gates
+## 하네스 하드 게이트
 
-- [ ] ticket id and scope are documented
-- [ ] role boundary is respected (Contract/BE/FE/QA)
-- [ ] worktree branch naming rule is followed
-- [ ] DB/Flyway change includes rollback or compatibility note
-- [ ] hook fallback used? if yes, reason and manual steps are recorded
+- [ ] 티켓 ID와 범위가 명시됨
+- [ ] 역할 경계 준수 (Contract/BE/FE/QA)
+- [ ] 브랜치 네이밍 규칙 준수 (`feature/TB-{id}-{short-name}`)
+- [ ] Hook fallback 사용 시 사유와 수동 절차 기록 (해당 없으면 N/A)
