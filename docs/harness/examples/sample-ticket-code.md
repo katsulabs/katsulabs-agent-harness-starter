@@ -14,7 +14,7 @@
 
 - 산출: `api-spec/users.yaml`, DTO 스키마
 - 핸드오프 메모: `examples/contract-handoff.md` 형식
-- 검증: `pwsh scripts/validate-harness.ps1`
+- 검증: `validate-harness` (`.ps1` 또는 `.sh`)
 
 ## 2. Backend (Contract 완료 후)
 
@@ -23,7 +23,7 @@
 ```
 
 - 범위: `server/**` (팀 경로에 맞게)
-- 검증: `pwsh scripts/run-eval.ps1`
+- 검증: `run-eval`
 
 ## 3. Frontend (Contract 완료 후, BE와 병렬 가능)
 
@@ -32,7 +32,7 @@
 ```
 
 - 범위: `client/**`
-- 검증: `pwsh scripts/run-eval.ps1`
+- 검증: `run-eval`
 
 ## 4. QA
 
@@ -40,5 +40,5 @@
 [TB-101][QA] PR 생성
 ```
 
-- `validate-harness.ps1 -Pr` + `run-eval.ps1`
+- `validate-harness -Pr` + `run-eval`
 - CI green → merge

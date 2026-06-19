@@ -8,7 +8,7 @@
 2. `AGENTS.md` [대괄호] 항목을 프로젝트에 맞게 작성
 3. `.cursor/rules/*.mdc` globs를 실제 디렉터리에 맞게 수정
 4. `playbook.md` 역할 테이블 동기화
-5. `pwsh scripts/install-githooks.ps1`
+5. hooks 설치 (`install-githooks.ps1` 또는 `.sh`) — `setup-shell.md` 참고
 6. `docs/harness/todo.md`에 첫 티켓/DoD 입력
 7. GitHub: `harness-gate` CI + branch protection (`validate` check)
 
@@ -17,9 +17,9 @@
 1. **충돌 확인**: 기존 `.cursor/rules`, `AGENTS.md`, `.github/workflows` 백업
 2. 템플릿 파일을 **병합** (덮어쓰기 전 diff 검토)
 3. globs·경로를 기존 구조에 맞게 조정 (`.cursor/rules/backend.mdc` 등)
-4. `scripts/run-eval.ps1`에 팀 테스트 명령 연결
+4. `scripts/run-eval.ps1` / `run-eval.sh`에 팀 테스트 명령 연결
 5. PR 템플릿 테스트 항목을 스택에 맞게 수정
-6. `validate-harness.ps1` 통과 후 첫 harness PR 생성
+6. `validate-harness` 통과 후 첫 harness PR 생성
 
 ## worktree (병렬 티켓)
 
@@ -45,7 +45,7 @@ git worktree remove ../.worktrees/TB-123-feature
 
 - [ ] AGENTS.md 채움
 - [ ] globs ↔ 실제 경로 일치
-- [ ] `validate-harness.ps1` PASS
-- [ ] `run-eval.ps1` 연결 또는 SKIP 확인
+- [ ] `validate-harness` PASS (`.ps1` 또는 `.sh`)
+- [ ] `run-eval` 연결 또는 SKIP 확인
 - [ ] 샘플: `examples/sample-ticket-code.md` 시뮬레이션
 - [ ] MCP 필요 시 `mcp.json.example` 참고해 설정

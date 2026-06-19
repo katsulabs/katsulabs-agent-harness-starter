@@ -13,7 +13,7 @@
 ```
 
 - 변경: `docs/harness/playbook.md` (KPI 섹션만)
-- 검증: `pwsh scripts/validate-harness.ps1`
+- 검증: `validate-harness`
 
 ## QA 단계
 
@@ -21,6 +21,6 @@
 [TB-004][QA] PR 생성 및 CI 확인
 ```
 
-- `pwsh scripts/validate-harness.ps1 -Pr`
+- `validate-harness -Pr`
 - PR 본문: `examples/sample-pr.md` 참고
 - CI harness-gate green 후 머지

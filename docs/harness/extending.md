@@ -12,9 +12,9 @@
 
 globs를 실제 경로에 맞게 수정 후 playbook·AGENTS.md 동기화.
 
-## eval (`scripts/run-eval.ps1`)
+## eval (`scripts/run-eval.ps1` / `run-eval.sh`)
 
-팀 테스트 명령으로 교체:
+팀 테스트 명령으로 교체. 쉘: `setup-shell.md`
 
 ```powershell
 # npm test / mvn test / pytest 등
@@ -22,7 +22,7 @@ globs를 실제 경로에 맞게 수정 후 playbook·AGENTS.md 동기화.
 
 ## CI
 
-`harness-gate.yml`의 `test` job이 `run-eval.ps1` 실행. branch protection에 `test` 추가.
+`harness-gate.yml` — `validate`·`test`(ubuntu) + OS별 `*-platforms` jobs. branch protection: `validate` + `test`.
 
 ## MCP
 

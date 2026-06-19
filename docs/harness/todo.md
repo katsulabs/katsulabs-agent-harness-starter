@@ -10,6 +10,10 @@
 
 | 티켓 | DoD |
 |------|-----|
+| TB-010 | macOS/Windows 쉘 이중화 (.sh + .ps1), pwsh 7.4+ 버전·설치 문서, CI OS matrix |
+
+| 티켓 | DoD |
+|------|-----|
 | TB-001 | 문서 한글화, 스킬 추가, 하네스 절감 |
 | TB-002 | 토큰 효율 (규칙·스킬·playbook 통합) |
 | TB-003 | validate 스크립트, CI, qa 규칙, AGENTS.md |

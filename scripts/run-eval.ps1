@@ -1,8 +1,11 @@
-#Requires -Version 5.1
+#Requires -Version 7.4
 <#
 .SYNOPSIS
   프로젝트 테스트 eval 스켈레톤. 팀 스택에 맞게 수정.
+.NOTES
+  macOS/Linux/Git Bash: ./scripts/run-eval.sh
 #>
+. "$PSScriptRoot/shell-env.ps1"
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $root
