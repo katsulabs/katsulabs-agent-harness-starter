@@ -1,14 +1,18 @@
-#Requires -Version 5.1
+#Requires -Version 7.4
 <#
 .SYNOPSIS
-  Harness Gate — 링크·규칙·일관성·템플릿 자동 검증
+  Harness Gate — 링크·규칙·일관성·템플릿 자동 검증 (PowerShell 7.4+)
 .EXAMPLE
   pwsh scripts/validate-harness.ps1
 .EXAMPLE
   pwsh scripts/validate-harness.ps1 -Pr
+.NOTES
+  macOS/Linux/Git Bash: ./scripts/validate-harness.sh
+  Setup: docs/harness/setup-shell.md
 #>
 param([switch]$Pr)
 
+. "$PSScriptRoot/shell-env.ps1"
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $root
@@ -156,8 +160,9 @@ elseif ((Get-Content $workflow -Raw) -notmatch 'test:') { Fail "CI: test job 누
 # --- 6b. 3세대 필수 파일 ---
 foreach ($f in @(
     'AGENTS.md', 'CONTRIBUTING.md', 'docs/harness/TEMPLATE.md',
-    'scripts/run-eval.ps1', '.cursor/mcp.json.example',
-    'docs/harness/examples/sample-ticket-code.md'
+    'scripts/run-eval.ps1', 'scripts/run-eval.sh',
+    'scripts/validate-harness.sh', 'docs/harness/setup-shell.md',
+    '.cursor/mcp.json.example', 'docs/harness/examples/sample-ticket-code.md'
 )) {
     if (-not (Test-Path (Join-Path $root $f))) { Fail "MISSING: $f" }
 }

@@ -30,11 +30,22 @@ globs는 `.cursor/rules/*.mdc`와 동기화한다.
 
 ## 검증 (실행)
 
-```bash
+PowerShell **7.4+** (`pwsh`). 설치·버전: `docs/harness/setup-shell.md`
+
+```powershell
 pwsh scripts/validate-harness.ps1       # 하네스
 pwsh scripts/run-eval.ps1               # 프로젝트 테스트 (설정 시)
 pwsh scripts/validate-harness.ps1 -Pr   # PR 직전
 pwsh scripts/install-githooks.ps1       # pre-commit
+```
+
+macOS / Linux / Git Bash:
+
+```bash
+./scripts/validate-harness.sh
+./scripts/run-eval.sh
+./scripts/validate-harness.sh -Pr
+./scripts/install-githooks.sh
 ```
 
 ## MCP (선택)

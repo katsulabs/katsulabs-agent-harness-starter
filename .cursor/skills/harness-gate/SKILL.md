@@ -6,8 +6,8 @@ disable-model-invocation: true
 
 # Harness Gate
 
-**자동:** `pwsh scripts/validate-harness.ps1 -Pr`
+**자동:** `validate-harness -Pr` (`pwsh scripts/validate-harness.ps1 -Pr` 또는 `./scripts/validate-harness.sh -Pr`)
 
 **수동 (통과 후):** PR 본문·diff 일치 · Hook fallback 사유
 
-**연계:** `run-eval.ps1` · 스킬 `pr-workflow`
+**연계:** `run-eval` · 스킬 `pr-workflow` · 쉘: `docs/harness/setup-shell.md`

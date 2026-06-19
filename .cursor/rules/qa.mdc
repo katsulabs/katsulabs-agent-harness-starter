@@ -6,5 +6,5 @@ alwaysApply: false
 
 # QA
 
-- PR 직전: `validate-harness.ps1 -Pr` + `run-eval.ps1` + CI validate/test.
+- PR 직전: `validate-harness -Pr` + `run-eval` + CI validate/test.
 - 실패 시 수정·재실행. 스킬 `harness-gate`는 체크리스트 참조용.

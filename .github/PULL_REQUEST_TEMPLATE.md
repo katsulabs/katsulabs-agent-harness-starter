@@ -4,8 +4,8 @@
 
 ## 검증 계획
 
-- [ ] `pwsh scripts/validate-harness.ps1 -Pr` 통과
-- [ ] `pwsh scripts/run-eval.ps1` 통과 (또는 SKIP — 미설정 시)
+- [ ] `validate-harness -Pr` 통과 (`pwsh scripts/validate-harness.ps1 -Pr` 또는 `./scripts/validate-harness.sh -Pr`)
+- [ ] `run-eval` 통과 (또는 SKIP — 미설정 시)
 - [ ] CI `validate` + `test` green
 - [ ] `main` 직접 커밋 없음
 

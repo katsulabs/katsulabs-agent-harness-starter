@@ -6,8 +6,8 @@ disable-model-invocation: true
 
 # PR Workflow
 
-1. `pwsh scripts/validate-harness.ps1 -Pr`
-2. `pwsh scripts/run-eval.ps1` (설정 시)
+1. `validate-harness -Pr` (`.ps1` 또는 `.sh`)
+2. `run-eval` (설정 시)
 3. `.github/PULL_REQUEST_TEMPLATE.md` 작성
 4. `gh pr create` · `gh pr checks --watch`
 5. CI `validate` + `test` green 확인 후 merge
