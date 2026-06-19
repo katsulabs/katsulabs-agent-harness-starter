@@ -68,4 +68,4 @@ Windows에서 Git Bash만 쓰는 경우에도 `.sh` 경로로 동작합니다.
 
 ## CI
 
-GitHub Actions는 OS별로 양쪽 경로를 검증합니다 (`harness-gate.yml` matrix).
+GitHub Actions는 `validate`/`test`(ubuntu)와 OS별 `*-platforms` jobs로 양쪽 경로를 검증합니다 (`harness-gate.yml`).

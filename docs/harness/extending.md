@@ -22,7 +22,7 @@ globs를 실제 경로에 맞게 수정 후 playbook·AGENTS.md 동기화.
 
 ## CI
 
-`harness-gate.yml` — OS matrix에서 `validate`·`test` 실행 (ubuntu/mac: `.sh`, windows: `.ps1`). branch protection에 `validate` + `test` 추가.
+`harness-gate.yml` — `validate`·`test`(ubuntu) + OS별 `*-platforms` jobs. branch protection: `validate` + `test`.
 
 ## MCP
 

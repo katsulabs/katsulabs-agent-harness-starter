@@ -34,7 +34,7 @@
 | 하네스 | `pwsh scripts/validate-harness.ps1` | `./scripts/validate-harness.sh` |
 | eval | `pwsh scripts/run-eval.ps1` | `./scripts/run-eval.sh` |
 | PR | `validate-harness.ps1 -Pr` + 스킬 `pr-workflow` | `validate-harness.sh -Pr` + 스킬 `pr-workflow` |
-| CI | `validate` + `test` jobs (OS matrix) |
+| CI | `validate` + `test` jobs · 추가: `*-platforms` (OS matrix) |
 
 branch protection: `validate`, `test` (권장)
 
