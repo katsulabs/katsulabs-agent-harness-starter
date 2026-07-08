@@ -1,6 +1,6 @@
 # Sample TB-101
 
-`sample-ticket-code.md`와 연결된 최소 BE/FE mock. 팀은 구조만 참고하고 실제 경로(`server/`, `client/`)로 복사한다.
+`sample-ticket-code.md`와 연결된 최소 BE/FE mock. 구조만 참고하고 실제 경로(`server/`, `client/`)로 복사한다.
 
 | 경로 | 역할 |
 |------|------|

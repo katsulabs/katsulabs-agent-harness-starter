@@ -1,6 +1,6 @@
 # Agent Harness 소개
 
-팀 공유용 **유일한 입구**. 에이전트(Cursor) **운영 방식**을 규칙·검증·CI로 고정하는 템플릿입니다.
+이 하네스의 **유일한 입구**. Cursor **운영 방식**을 규칙·검증·CI로 고정해 둔 **개인 에이전트 하네스** 저장소입니다.
 
 ---
 
@@ -25,7 +25,7 @@
 
 ## 하루 흐름 (예: TB-101)
 
-Maria가 사용자 목록 API 티켓을 맡는다. `todo.md`에 TB-101을 등록하고 `feature/TB-101-user-list` 브랜치를 만든다. Contract 에이전트가 handoff를 고정하고 `validate-handoff`를 통과한다. Backend·Frontend가 병렬로 구현한 뒤 `run-eval`을 돌린다. QA가 `validate-harness -Pr`과 eval 요약을 PR에 붙이고 CI가 green이면 no-ff로 머지한다.
+TB-101을 맡으면: `todo.md`에 등록하고 `feature/TB-101-user-list` 브랜치를 연다. Contract 역할이 handoff를 고정하고 `validate-handoff`를 통과한다. Backend·Frontend를 병렬로 구현한 뒤 `run-eval`을 돌린다. PR 전 `validate-harness -Pr`과 eval 요약을 붙이고 CI가 green이면 no-ff로 머지한다.
 
 ---
 
@@ -109,7 +109,7 @@ todo → worktree/브랜치 → Contract → BE/FE(병렬) → QA → PR → CI 
 
 | 대상 | 문서 |
 |------|------|
-| **팀 (여기서 시작)** | `introduction.md` |
+| **입구 (여기서 시작)** | `introduction.md` |
 | 세대·진화 | `evolution.md` |
 | 채택 | `TEMPLATE.md` |
 | 첫 연습 | `first-ticket.md` |

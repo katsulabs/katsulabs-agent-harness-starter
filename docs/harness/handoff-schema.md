@@ -27,7 +27,7 @@ breaking: false
 
 ## 파일 위치
 
-- 티켓당 1개: `docs/harness/handoffs/TB-{id}-handoff.md` (팀 선택)
+- 티켓당 1개: `docs/harness/handoffs/TB-{id}-handoff.md` (선택)
 - 또는 PR 설명에 동일 구조 붙여넣기
 
 ## 검증

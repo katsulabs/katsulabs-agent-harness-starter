@@ -10,12 +10,12 @@ cp .cursor/mcp.json.example .cursor/mcp.json
 
 `.cursor/mcp.json`은 **커밋하지 않는다** (토큰 포함). `.gitignore`에 추가 권장.
 
-## 2. 팀별 서버 예시
+## 2. 서버 예시
 
 | 용도 | 서버 | env |
 |------|------|-----|
 | 이슈·PR | `@modelcontextprotocol/server-github` | `GITHUB_PERSONAL_ACCESS_TOKEN` |
-| DB 조회 | 팀 자체 MCP 또는 Snowflake/Postgres 플러그인 | 팀 비밀관리 |
+| DB 조회 | 자체 MCP 또는 Snowflake/Postgres 플러그인 | 비밀관리 |
 | API 테스트 | Postman MCP (Cursor 플러그인) | Postman API key |
 
 ## 3. AGENTS.md 기록
@@ -38,7 +38,7 @@ cp .cursor/mcp.json.example .cursor/mcp.json
 ## 5. 검증
 
 - Cursor Settings → MCP에서 서버 green 확인
-- 티켓 착수 시 `todo.md` ID와 외부 이슈 키 매핑 문서화 (팀 선택)
+- 티켓 착수 시 `todo.md` ID와 외부 이슈 키 매핑 문서화 (선택)
 
 ## 6. 보안
 
