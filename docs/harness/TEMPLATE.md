@@ -46,6 +46,7 @@ git worktree remove ../.worktrees/TB-123-feature
 - [ ] AGENTS.md 채움
 - [ ] globs ↔ 실제 경로 일치
 - [ ] `validate-harness` PASS (`.ps1` 또는 `.sh`)
-- [ ] `run-eval` 연결 또는 SKIP 확인
+- [ ] `run-eval` 연결 또는 harness-smoke PASS 확인
+- [ ] 핸드오프: `handoff-schema.md` 팀 경로 합의
 - [ ] 샘플: `examples/sample-ticket-code.md` 시뮬레이션
 - [ ] MCP 필요 시 `mcp.json.example` 참고해 설정

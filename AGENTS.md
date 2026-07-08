@@ -34,7 +34,11 @@ PowerShell **7.4+** (`pwsh`). 설치·버전: `docs/harness/setup-shell.md`
 
 ```powershell
 pwsh scripts/validate-harness.ps1       # 하네스
-pwsh scripts/run-eval.ps1               # 프로젝트 테스트 (설정 시)
+pwsh scripts/run-eval.ps1               # 앱 테스트 또는 harness-smoke
+pwsh scripts/validate-handoff.ps1       # handoff 린터
+pwsh scripts/run-agent-eval.ps1         # agent-smoke 정적 프록시
+pwsh scripts/run-agent-llm-eval.ps1      # LLM 세션 (-Validate 채점)
+pwsh scripts/summarize-eval.ps1         # PR용 eval 요약
 pwsh scripts/validate-harness.ps1 -Pr   # PR 직전
 pwsh scripts/install-githooks.ps1       # pre-commit
 ```
@@ -44,13 +48,17 @@ macOS / Linux / Git Bash:
 ```bash
 ./scripts/validate-harness.sh
 ./scripts/run-eval.sh
+./scripts/validate-handoff.sh
+./scripts/run-agent-eval.sh
+./scripts/run-agent-llm-eval.sh
+./scripts/summarize-eval.sh
 ./scripts/validate-harness.sh -Pr
 ./scripts/install-githooks.sh
 ```
 
 ## MCP (선택)
 
-`.cursor/mcp.json.example` 참고. 이슈 트래커·CI·DB 등 팀 도구 연결.
+`.cursor/mcp.json.example` · 설정: `docs/harness/mcp-setup.md`
 
 ## 금지
 

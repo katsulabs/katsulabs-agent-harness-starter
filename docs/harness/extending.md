@@ -14,11 +14,15 @@ globs를 실제 경로에 맞게 수정 후 playbook·AGENTS.md 동기화.
 
 ## eval (`scripts/run-eval.ps1` / `run-eval.sh`)
 
-팀 테스트 명령으로 교체. 쉘: `setup-shell.md`
+팀 테스트 명령으로 교체. 앱 러너 없으면 `eval/harness-smoke` (handoff·agent-eval 포함).
 
 ```powershell
 # npm test / mvn test / pytest 등
+pwsh scripts/validate-handoff.ps1   # handoff 변경 시
+pwsh scripts/run-agent-eval.ps1     # agent-smoke 정적 프록시
 ```
+
+리포트: `eval/reports/README.md`
 
 ## CI
 
@@ -27,7 +31,7 @@ globs를 실제 경로에 맞게 수정 후 playbook·AGENTS.md 동기화.
 ## MCP
 
 1. `.cursor/mcp.json.example` 복사 → `.cursor/mcp.json`
-2. 토큰·서버 URL을 팀 비밀관리에 등록
+2. 상세: `mcp-setup.md`
 3. AGENTS.md에 사용 MCP 목록 기록
 
 MCP는 Skills와 보완: Skill이 절차, MCP가 live API.

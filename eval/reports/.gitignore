@@ -1,0 +1,6 @@
+agent-llm-session.md
+agent-llm-session.template.md
+latest-*.json
+*-20*.json
+!.gitignore
+!README.md

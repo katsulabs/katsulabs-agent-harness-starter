@@ -5,7 +5,8 @@
 ## 검증 계획
 
 - [ ] `validate-harness -Pr` 통과 (`pwsh scripts/validate-harness.ps1 -Pr` 또는 `./scripts/validate-harness.sh -Pr`)
-- [ ] `run-eval` 통과 (또는 SKIP — 미설정 시)
+- [ ] `run-eval` 통과 (앱 테스트 또는 `harness-smoke`)
+- [ ] `eval/reports/latest-harness-smoke.json` · `latest-agent-eval.json` status 확인
 - [ ] CI `validate` + `test` green
 - [ ] `main` 직접 커밋 없음
 
@@ -13,7 +14,8 @@
 
 - [ ] Backend test passed (N/A 가능)
 - [ ] Frontend test passed (N/A 가능)
-- [ ] Contract/API 변경 시 핸드오프 메모 첨부 (N/A 가능)
+- [ ] Contract/API 변경 시 핸드오프 메모 첨부 · `validate-handoff` PASS (N/A 가능)
+- [ ] Agent smoke: `run-agent-eval` PASS 또는 checklist 수동 기록 (N/A 가능)
 
 ## 하드 게이트
 

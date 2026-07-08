@@ -174,13 +174,24 @@ for f in \
   AGENTS.md CONTRIBUTING.md docs/harness/TEMPLATE.md \
   scripts/run-eval.ps1 scripts/run-eval.sh \
   scripts/validate-harness.sh docs/harness/setup-shell.md \
-  .cursor/mcp.json.example docs/harness/examples/sample-ticket-code.md; do
+  .cursor/mcp.json.example docs/harness/examples/sample-ticket-code.md \
+  eval/harness-smoke.ps1 eval/harness-smoke.sh \
+  eval/agent-smoke.checklist.md eval/reports/README.md \
+  docs/harness/handoff-schema.md docs/harness/mcp-setup.md \
+  scripts/validate-handoff.ps1 scripts/validate-handoff.sh \
+  scripts/run-agent-eval.ps1 scripts/run-agent-eval.sh \
+  scripts/dispatch-prompt.ps1 scripts/dispatch-prompt.sh \
+  scripts/summarize-eval.ps1 scripts/summarize-eval.sh \
+  sample/package.json sample/server/users.test.js \
+  docs/harness/secrets.md docs/harness/agent-llm-eval.md \
+  .env.example eval/agent-tasks/harness-baseline.md \
+  scripts/run-agent-llm-eval.ps1 scripts/run-agent-llm-eval.sh; do
   [[ -e "$f" ]] || fail "MISSING: $f"
 done
 agents="$(cat AGENTS.md)"
 grep -q '문서 전용' <<<"$agents" && fail "AGENTS.md: 코드 저장소 계약으로 갱신 필요"
 
-for skill in harness-gate pr-workflow worktree-setup; do
+for skill in harness-gate pr-workflow worktree-setup dispatch; do
   [[ -f ".cursor/skills/$skill/SKILL.md" ]] || fail "MISSING: .cursor/skills/$skill/SKILL.md"
 done
 

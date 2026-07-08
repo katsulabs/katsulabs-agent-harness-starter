@@ -6,9 +6,10 @@
 
 - **Ambient**: `AGENTS.md`, `docs/harness/playbook.md`
 - **Rules**: orchestrator, editor, contract, backend, frontend, qa
-- **Skills**: harness-gate, pr-workflow, worktree-setup
-- **Runtime**: `validate-harness` / `run-eval` (`.ps1` + `.sh`), CI, hooks
-- **MCP**: `.cursor/mcp.json.example`
+- **Skills**: harness-gate, pr-workflow, worktree-setup, dispatch
+- **Sample**: `sample/` (TB-101 mock · `npm test`)
+- **Runtime**: `validate-harness` / `validate-handoff` / `run-eval` / `run-agent-eval`, CI, hooks
+- **MCP**: `.cursor/mcp.json.example` · `docs/harness/mcp-setup.md`
 
 ## 시작
 
