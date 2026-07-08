@@ -15,6 +15,16 @@ if (Test-Path 'package.json') {
     npm test
     exit $LASTEXITCODE
 }
+if (Test-Path 'sample/package.json') {
+    Write-Host 'RUN: sample npm test'
+    Push-Location (Join-Path $root 'sample')
+    try {
+        npm test
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    } finally {
+        Pop-Location
+    }
+}
 if (Test-Path 'pom.xml') {
     Write-Host 'RUN: mvn test -q'
     mvn test -q
@@ -26,5 +36,6 @@ if (Test-Path 'pyproject.toml') {
     exit $LASTEXITCODE
 }
 
-Write-Host 'SKIP: 테스트 러너 미설정 (package.json / pom.xml / pyproject.toml 없음)'
-exit 0
+Write-Host 'RUN: harness-smoke (앱 테스트 러너 없음)'
+& pwsh -NoProfile -File (Join-Path $root 'eval/harness-smoke.ps1')
+exit $LASTEXITCODE

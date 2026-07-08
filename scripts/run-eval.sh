@@ -10,6 +10,10 @@ if [[ -f package.json ]]; then
   npm test
   exit $?
 fi
+if [[ -f sample/package.json ]]; then
+  echo 'RUN: sample npm test'
+  (cd sample && npm test)
+fi
 if [[ -f pom.xml ]]; then
   echo 'RUN: mvn test -q'
   mvn test -q
@@ -21,5 +25,6 @@ if [[ -f pyproject.toml ]]; then
   exit $?
 fi
 
-echo 'SKIP: 테스트 러너 미설정 (package.json / pom.xml / pyproject.toml 없음)'
-exit 0
+echo 'RUN: harness-smoke (앱 테스트 러너 없음)'
+bash ./eval/harness-smoke.sh
+exit $?

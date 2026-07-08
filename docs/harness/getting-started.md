@@ -1,28 +1,25 @@
-# 시작 가이드
+# 시작 (허브)
 
-**에이전트:** `AGENTS.md` + `playbook.md` (필요 섹션만). **사람:** 이 문서 + `TEMPLATE.md`.
+**읽기 순서** — 역할별로 **한 문서만** 먼저 연다.
 
-## 설치
+| 순서 | 문서 | 대상 |
+|------|------|------|
+| 1 | [introduction.md](./introduction.md) | **팀 전체** — 이 하네스가 뭔지 |
+| 2 | [TEMPLATE.md](./TEMPLATE.md) | 채택 담당 — 프로젝트에 붙이기 |
+| 3 | [first-ticket.md](./first-ticket.md) | 첫 연습 (30분) |
+| 4 | [AGENTS.md](../../AGENTS.md) | 에이전트 — 명령·계약 |
+| 5 | [playbook.md](./playbook.md) | 에이전트 — 운영 (필요 섹션만) |
 
-1. `docs/harness/TEMPLATE.md` 절차 따름
-2. 쉘 환경: `docs/harness/setup-shell.md` (PowerShell 7.4+ 또는 bash)
-3. hooks 설치:
-   - Windows: `pwsh scripts/install-githooks.ps1`
-   - macOS/Linux: `./scripts/install-githooks.sh`
-4. `AGENTS.md` [대괄호] 항목 작성
-5. `todo.md`에 첫 티켓/DoD
+## Day 1 체크 (3줄)
 
-## Day 1
+```powershell
+pwsh scripts/validate-harness.ps1
+pwsh scripts/install-githooks.ps1
+pwsh scripts/run-eval.ps1
+```
 
-- [ ] `validate-harness` PASS (`.ps1` 또는 `.sh`)
-- [ ] `run-eval` (SKIP 또는 PASS)
-- [ ] `examples/sample-ticket-code.md` 시뮬레이션
+GitHub: CI `validate` + `test` · [operations.md](./operations.md)
 
-## GitHub
+## 더 보기
 
-- CI: `validate` + `test`
-- branch protection: 두 check 모두 권장 (`operations.md`)
-
-## 참고
-
-`CONTRIBUTING.md` · `extending.md` · `operations.md`
+[eval-guide.md](./eval-guide.md) · [glossary.md](./glossary.md) · [scripts-reference.md](./scripts-reference.md) · [extending.md](./extending.md)

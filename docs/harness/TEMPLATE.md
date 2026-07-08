@@ -31,21 +31,15 @@ git worktree remove ../.worktrees/TB-123-feature
 
 `.worktrees/`는 `.gitignore`에 추가 권장.
 
-## 3세대 레이어
-
-| 레이어 | 파일 | 용도 |
-|--------|------|------|
-| Ambient | AGENTS.md, playbook | 계약·운영 |
-| Rules | `.cursor/rules/*.mdc` | 최소 always-on + 조건부 역할 |
-| Skills | `.cursor/skills/*/SKILL.md` | PR·worktree 등 절차 |
-| Runtime | hooks, scripts, CI | 강제 검증 |
-| Integrations | MCP (선택) | 외부 도구 |
+레이어 개요: [introduction.md](./introduction.md)
 
 ## 체크리스트
 
 - [ ] AGENTS.md 채움
 - [ ] globs ↔ 실제 경로 일치
 - [ ] `validate-harness` PASS (`.ps1` 또는 `.sh`)
-- [ ] `run-eval` 연결 또는 SKIP 확인
-- [ ] 샘플: `examples/sample-ticket-code.md` 시뮬레이션
+- [ ] `run-eval` 연결 또는 harness-smoke PASS 확인
+- [ ] 핸드오프: `handoff-schema.md` 팀 경로 합의
+- [ ] 스택 프리셋: `presets/node.md` 등
+- [ ] `first-ticket.md`로 첫 티켓 시뮬레이션
 - [ ] MCP 필요 시 `mcp.json.example` 참고해 설정

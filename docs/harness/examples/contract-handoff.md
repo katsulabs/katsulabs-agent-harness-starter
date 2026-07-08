@@ -1,3 +1,11 @@
+---
+ticket: TB-101
+from: Contract
+to: [Backend, Frontend]
+status: ready
+breaking: false
+---
+
 # Contract Handoff — TB-101
 
 ## API 변경
@@ -10,7 +18,7 @@
 { "id": "uuid", "name": "string", "email": "string" }
 ```
 
-## DB (해당 시)
+## DB
 
 - migration: `V00x__users.sql`
 - 호환성: additive only / rollback: [N/A 또는 절차]
@@ -27,3 +35,5 @@
 ## Breaking change
 
 없음
+
+스키마: `docs/harness/handoff-schema.md`

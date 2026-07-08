@@ -162,14 +162,35 @@ foreach ($f in @(
     'AGENTS.md', 'CONTRIBUTING.md', 'docs/harness/TEMPLATE.md',
     'scripts/run-eval.ps1', 'scripts/run-eval.sh',
     'scripts/validate-harness.sh', 'docs/harness/setup-shell.md',
-    '.cursor/mcp.json.example', 'docs/harness/examples/sample-ticket-code.md'
+    '.cursor/mcp.json.example', 'docs/harness/examples/sample-ticket-code.md',
+    'eval/harness-smoke.ps1', 'eval/harness-smoke.sh',
+    'eval/agent-smoke.checklist.md', 'eval/reports/README.md',
+    'docs/harness/handoff-schema.md', 'docs/harness/mcp-setup.md',
+    'scripts/validate-handoff.ps1', 'scripts/validate-handoff.sh',
+    'scripts/run-agent-eval.ps1', 'scripts/run-agent-eval.sh',
+    'scripts/dispatch-prompt.ps1', 'scripts/dispatch-prompt.sh',
+    'scripts/summarize-eval.ps1', 'scripts/summarize-eval.sh',
+    'sample/package.json', 'sample/server/users.test.js',
+    'docs/harness/secrets.md', 'docs/harness/agent-llm-eval.md',
+    'scripts/run-agent-llm-eval.ps1', 'scripts/run-agent-llm-eval.sh',
+    'scripts/score-agent-llm.ps1', 'scripts/score-agent-llm.sh',
+    'scripts/cost-summary.ps1', 'scripts/cost-summary.sh',
+    'scripts/verify-dispatch.ps1', 'scripts/verify-dispatch.sh',
+    'docs/harness/secrets-rotation.md',
+    'eval/agent-tasks/expected/al-01.json',
+    'docs/harness/first-ticket.md', 'docs/harness/presets/node.md',
+    'docs/harness/handoffs/README.md',
+    'scripts/validate-commit-msg.ps1', 'scripts/validate-todo-sync.ps1',
+    'scripts/validate-pr-body.ps1',     'scripts/validate-staged-handoff.ps1',
+    'docs/harness/glossary.md', 'docs/harness/eval-guide.md',
+    'docs/harness/scripts-reference.md'
 )) {
     if (-not (Test-Path (Join-Path $root $f))) { Fail "MISSING: $f" }
 }
 $agents = Get-Content (Join-Path $root 'AGENTS.md') -Raw
 if ($agents -match '문서 전용') { Fail "AGENTS.md: 코드 저장소 계약으로 갱신 필요" }
 
-foreach ($skill in @('harness-gate', 'pr-workflow', 'worktree-setup')) {
+foreach ($skill in @('harness-gate', 'pr-workflow', 'worktree-setup', 'dispatch', 'contract-handoff', 'backend-test-gate')) {
     if (-not (Test-Path (Join-Path $root ".cursor/skills/$skill/SKILL.md"))) {
         Fail "MISSING: .cursor/skills/$skill/SKILL.md"
     }
@@ -181,6 +202,12 @@ if ($Pr) {
     if ($branch -eq 'main') { Fail "PR_BRANCH: main에서 PR 불가" }
     $commits = git log main..HEAD --oneline 2>$null
     if (-not $commits) { Fail "PR_COMMITS: main 대비 커밋 없음" }
+    & pwsh -NoProfile -File (Join-Path $root 'scripts/verify-dispatch.ps1')
+    if ($LASTEXITCODE -ne 0) { Fail "DISPATCH: verify-dispatch 실패" }
+    & pwsh -NoProfile -File (Join-Path $root 'scripts/validate-todo-sync.ps1')
+    if ($LASTEXITCODE -ne 0) { Fail "TODO_SYNC: validate-todo-sync 실패" }
+    & pwsh -NoProfile -File (Join-Path $root 'scripts/validate-commit-msg.ps1') -Pr
+    if ($LASTEXITCODE -ne 0) { Fail "COMMIT: validate-commit-msg 실패" }
 }
 
 # --- 결과 ---

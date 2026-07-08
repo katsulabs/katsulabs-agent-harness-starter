@@ -10,6 +10,12 @@
 
 | 티켓 | DoD |
 |------|-----|
+| TB-016 | 커밋/todo/PR 게이트, 역할 스킬, presets, first-ticket, pre-commit handoff |
+| TB-015 | LLM auto-score, cost-summary, verify-dispatch, secrets-rotation |
+| TB-014 | LLM eval 세션·채점, duration 리포트, harness-smoke 연동 |
+| TB-013 | sample TB-101, dispatch 스킬, summarize-eval, secrets·LLM eval 가이드 |
+| TB-012 | handoff 린터, agent-eval runner, eval 리포트, playbook/PR 게이트 |
+| TB-011 | harness-smoke eval, handoff 스키마, 서브에이전트 디스패치, MCP 가이드, run-eval 폴백 |
 | TB-010 | macOS/Windows 쉘 이중화 (.sh + .ps1), pwsh 7.4+ 버전·설치 문서, CI OS matrix |
 
 | 티켓 | DoD |
@@ -26,4 +32,4 @@
 
 | 항목 | 비고 |
 |------|------|
-| Secrets management | 배포 전 |
+| Vault/KMS 연동 | 배포 환경별 별도 설계 |

@@ -25,6 +25,25 @@
 
 스킬: `worktree-setup` · 경로: `../.worktrees/TB-{id}-{name}` · `.gitignore` 등록
 
+## 서브에이전트 디스패치
+
+규약만으로 멀티에이전트를 운영한다. Cursor **Task** 도구(또는 동급 서브에이전트)로 역할별 분리.
+
+| 단계 | 동작 |
+|------|------|
+| 1 | `[TB-xxx][Role]` 태그 + 범위(globs) + DoD를 프롬프트에 명시 |
+| 2 | Contract 먼저 · Backend/Frontend 병렬 가능 · QA 마지막 |
+| 3 | 산출물: Contract는 `handoff-schema.md` 형식 핸드오프 |
+| 4 | 서브에이전트 종료 시 산출물 경로·검증 결과를 메인에 전달 |
+
+병렬 티켓은 worktree 1개/티켓. 한 worktree 내 Backend·Frontend만 병렬 디스패치.
+
+프롬프트 생성: `dispatch-prompt` · **PR 전 검증:** `verify-dispatch` (브랜치 `feature/TB-{id}-*`)
+
+## 샘플 앱 (TB-101)
+
+`sample/` — api-spec + server 테스트 + client HTML. `run-eval`이 루트 러너 없을 때 `sample/npm test` 실행.
+
 ## 운영 게이트
 
 쉘 설정: `setup-shell.md` · PowerShell **7.4+** (`pwsh`)
@@ -38,20 +57,31 @@
 
 branch protection: `validate`, `test` (권장)
 
-## 3세대 레이어
+## Eval
 
-| 레이어 | 위치 |
-|--------|------|
-| Ambient | `AGENTS.md`, 이 playbook |
-| Rules | `.cursor/rules/*.mdc` |
-| Skills | `.cursor/skills/*` (PR, worktree, harness-gate) |
-| Runtime | hooks, scripts, CI |
-| MCP | `.cursor/mcp.json` (example 참고) |
+상세: [eval-guide.md](./eval-guide.md) · PR 요약: `summarize-eval`
+
+## 레이어
+
+개요·다이어그램: [introduction.md](./introduction.md) (3세대 상세는 여기만)
 
 ## 샘플
 
 - 문서: `examples/sample-ticket.md`
-- 코드: `examples/sample-ticket-code.md` · 핸드오프: `examples/contract-handoff.md`
+- 코드: `examples/sample-ticket-code.md` · 핸드오프: `examples/contract-handoff.md` · 스키마: `handoff-schema.md`
+
+## 실패 시
+
+| 실패 | 조치 |
+|------|------|
+| validate-harness | `playbook.md` · 링크·mdc·필수 파일 |
+| validate-handoff | `handoff-schema.md` |
+| verify-dispatch | `feature/TB-{id}-*` 브랜치 |
+| validate-todo-sync | `todo.md`에 티켓 등록 |
+| validate-commit-msg | 커밋 메시지에 `TB-{id}` |
+| run-eval | `first-ticket.md` · `presets/` |
+
+채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md` · 용어: `glossary.md`
 
 ## Hook fallback
 
