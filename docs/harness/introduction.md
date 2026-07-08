@@ -31,6 +31,8 @@ Maria가 사용자 목록 API 티켓을 맡는다. `todo.md`에 TB-101을 등록
 
 ## 구조 (3세대)
 
+> 1·2세대가 뭔지, 왜 “3세대”인지: [evolution.md](./evolution.md)
+
 ```mermaid
 flowchart LR
   A[Ambient] --> R[Rules] --> S[Skills] --> T[Runtime]
@@ -108,6 +110,7 @@ todo → worktree/브랜치 → Contract → BE/FE(병렬) → QA → PR → CI 
 | 대상 | 문서 |
 |------|------|
 | **팀 (여기서 시작)** | `introduction.md` |
+| 세대·진화 | `evolution.md` |
 | 채택 | `TEMPLATE.md` |
 | 첫 연습 | `first-ticket.md` |
 | 에이전트 | `AGENTS.md` → `playbook.md` (필요 섹션) |
