@@ -7,8 +7,9 @@
 1. `pwsh scripts/run-agent-llm-eval.ps1` — 세션 템플릿 생성
 2. `eval/agent-tasks/harness-baseline.md` 태스크를 새 세션에서 실행
 3. `eval/reports/agent-llm-session.md`에 PASS/FAIL 기록
-4. `pwsh scripts/run-agent-llm-eval.ps1 -Validate` — 채점 · `latest-agent-llm-eval.json`
-5. `summarize-eval`로 PR에 요약
+4. `pwsh scripts/score-agent-llm.ps1 -Session eval/reports/agent-llm-session.md` 또는 `-AutoScore`
+5. `pwsh scripts/run-agent-llm-eval.ps1 -Validate`
+6. `pwsh scripts/cost-summary.ps1` · `summarize-eval`로 PR에 요약
 
 ## 자동 vs 수동
 

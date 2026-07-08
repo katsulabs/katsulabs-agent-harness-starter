@@ -35,6 +35,12 @@ Add-Check 'agent-eval' ($LASTEXITCODE -eq 0) 'agent-eval 실패'
 & pwsh -NoProfile -File (Join-Path $root 'scripts/run-agent-llm-eval.ps1')
 Add-Check 'agent-llm-eval' ($LASTEXITCODE -eq 0) 'agent-llm-eval 템플릿 실패'
 
+& pwsh -NoProfile -File (Join-Path $root 'scripts/score-agent-llm.ps1') -Fixture
+Add-Check 'score-agent-llm' ($LASTEXITCODE -eq 0) 'score-agent-llm fixture 실패'
+
+& pwsh -NoProfile -File (Join-Path $root 'scripts/verify-dispatch.ps1')
+Add-Check 'verify-dispatch' ($LASTEXITCODE -eq 0) 'verify-dispatch 실패'
+
 # 4. eval 아티팩트
 foreach ($f in @(
     'eval/agent-smoke.checklist.md',
@@ -46,6 +52,9 @@ foreach ($f in @(
     'scripts/summarize-eval.ps1',
     'sample/package.json',
     'scripts/run-agent-llm-eval.ps1',
+    'scripts/score-agent-llm.ps1',
+    'scripts/cost-summary.ps1',
+    'scripts/verify-dispatch.ps1',
     '.cursor/skills/dispatch/SKILL.md'
 )) {
     $ok = Test-Path (Join-Path $root $f)
@@ -79,6 +88,7 @@ $stamped = Join-Path $reportDir "harness-smoke-$($timestamp -replace '[:Z]','').
 Set-Content -LiteralPath $stamped -Value $reportJson -Encoding utf8
 
 if ($failures.Count -eq 0) {
+    & pwsh -NoProfile -File (Join-Path $root 'scripts/cost-summary.ps1') | Out-Null
     Write-Host "PASS: harness-smoke -> eval/reports/latest-harness-smoke.json"
     exit 0
 }

@@ -38,7 +38,7 @@
 
 병렬 티켓은 worktree 1개/티켓. 한 worktree 내 Backend·Frontend만 병렬 디스패치.
 
-프롬프트 생성: `pwsh scripts/dispatch-prompt.ps1 -Ticket TB-xxx -Role Backend` · 스킬 `dispatch`
+프롬프트 생성: `dispatch-prompt` · **PR 전 검증:** `verify-dispatch` (브랜치 `feature/TB-{id}-*`)
 
 ## 샘플 앱 (TB-101)
 
@@ -70,7 +70,9 @@ branch protection: `validate`, `test` (권장)
 
 PR 요약: `pwsh scripts/summarize-eval.ps1` (또는 `.sh`)
 
-LLM 회귀: `run-agent-llm-eval` → 세션 채점 → `-Validate` · 리포트 `latest-agent-llm-eval.json`
+LLM 회귀: `run-agent-llm-eval` → 응답 채점 `score-agent-llm` / `-AutoScore` · fixture CI 검증
+
+비용 추정: `cost-summary` → `latest-cost-summary.json` (duration 합산)
 
 ## 3세대 레이어
 

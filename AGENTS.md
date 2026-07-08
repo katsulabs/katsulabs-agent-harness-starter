@@ -37,7 +37,10 @@ pwsh scripts/validate-harness.ps1       # 하네스
 pwsh scripts/run-eval.ps1               # 앱 테스트 또는 harness-smoke
 pwsh scripts/validate-handoff.ps1       # handoff 린터
 pwsh scripts/run-agent-eval.ps1         # agent-smoke 정적 프록시
-pwsh scripts/run-agent-llm-eval.ps1      # LLM 세션 (-Validate 채점)
+pwsh scripts/run-agent-llm-eval.ps1      # LLM 세션 (-Validate/-AutoScore)
+pwsh scripts/score-agent-llm.ps1 -Fixture # 패턴 채점 (세션: -Session)
+pwsh scripts/cost-summary.ps1              # duration 집계
+pwsh scripts/verify-dispatch.ps1           # 브랜치 규약
 pwsh scripts/summarize-eval.ps1         # PR용 eval 요약
 pwsh scripts/validate-harness.ps1 -Pr   # PR 직전
 pwsh scripts/install-githooks.ps1       # pre-commit
@@ -51,6 +54,9 @@ macOS / Linux / Git Bash:
 ./scripts/validate-handoff.sh
 ./scripts/run-agent-eval.sh
 ./scripts/run-agent-llm-eval.sh
+./scripts/score-agent-llm.sh
+./scripts/cost-summary.sh
+./scripts/verify-dispatch.sh
 ./scripts/summarize-eval.sh
 ./scripts/validate-harness.sh -Pr
 ./scripts/install-githooks.sh

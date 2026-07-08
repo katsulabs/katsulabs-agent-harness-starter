@@ -185,7 +185,12 @@ for f in \
   sample/package.json sample/server/users.test.js \
   docs/harness/secrets.md docs/harness/agent-llm-eval.md \
   .env.example eval/agent-tasks/harness-baseline.md \
-  scripts/run-agent-llm-eval.ps1 scripts/run-agent-llm-eval.sh; do
+  scripts/run-agent-llm-eval.ps1 scripts/run-agent-llm-eval.sh \
+  scripts/score-agent-llm.ps1 scripts/score-agent-llm.sh \
+  scripts/cost-summary.ps1 scripts/cost-summary.sh \
+  scripts/verify-dispatch.ps1 scripts/verify-dispatch.sh \
+  docs/harness/secrets-rotation.md \
+  eval/agent-tasks/expected/al-01.json; do
   [[ -e "$f" ]] || fail "MISSING: $f"
 done
 agents="$(cat AGENTS.md)"
@@ -201,6 +206,7 @@ if $PR_MODE; then
   [[ "$branch" == "main" ]] && fail "PR_BRANCH: main에서 PR 불가"
   commits="$(git log main..HEAD --oneline 2>/dev/null || true)"
   [[ -z "$commits" ]] && fail "PR_COMMITS: main 대비 커밋 없음"
+  bash ./scripts/verify-dispatch.sh || fail "DISPATCH: verify-dispatch 실패"
 fi
 
 # --- 결과 ---

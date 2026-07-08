@@ -33,6 +33,6 @@ cp .env.example .env
 
 - [ ] `.env` · `mcp.json` gitignore
 - [ ] `.env.example` 최신 유지
-- [ ] 회전 주기·담당자 문서화 (팀)
+- [ ] 회전 일정 캘린더 등록 · 상세: `secrets-rotation.md`
 
 배포 전 전체 정책은 팀 보안 기준에 따른다.

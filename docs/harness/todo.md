@@ -10,6 +10,7 @@
 
 | 티켓 | DoD |
 |------|-----|
+| TB-015 | LLM auto-score, cost-summary, verify-dispatch, secrets-rotation |
 | TB-014 | LLM eval 세션·채점, duration 리포트, harness-smoke 연동 |
 | TB-013 | sample TB-101, dispatch 스킬, summarize-eval, secrets·LLM eval 가이드 |
 | TB-012 | handoff 린터, agent-eval runner, eval 리포트, playbook/PR 게이트 |
@@ -30,4 +31,4 @@
 
 | 항목 | 비고 |
 |------|------|
-| Secrets management (고급) | 배포 전 · 기본: `secrets.md` |
+| Vault/KMS 연동 | 배포 환경별 별도 설계 |

@@ -172,7 +172,12 @@ foreach ($f in @(
     'scripts/summarize-eval.ps1', 'scripts/summarize-eval.sh',
     'sample/package.json', 'sample/server/users.test.js',
     'docs/harness/secrets.md', 'docs/harness/agent-llm-eval.md',
-    'scripts/run-agent-llm-eval.ps1', 'scripts/run-agent-llm-eval.sh'
+    'scripts/run-agent-llm-eval.ps1', 'scripts/run-agent-llm-eval.sh',
+    'scripts/score-agent-llm.ps1', 'scripts/score-agent-llm.sh',
+    'scripts/cost-summary.ps1', 'scripts/cost-summary.sh',
+    'scripts/verify-dispatch.ps1', 'scripts/verify-dispatch.sh',
+    'docs/harness/secrets-rotation.md',
+    'eval/agent-tasks/expected/al-01.json'
 )) {
     if (-not (Test-Path (Join-Path $root $f))) { Fail "MISSING: $f" }
 }
@@ -191,6 +196,8 @@ if ($Pr) {
     if ($branch -eq 'main') { Fail "PR_BRANCH: main에서 PR 불가" }
     $commits = git log main..HEAD --oneline 2>$null
     if (-not $commits) { Fail "PR_COMMITS: main 대비 커밋 없음" }
+    & pwsh -NoProfile -File (Join-Path $root 'scripts/verify-dispatch.ps1')
+    if ($LASTEXITCODE -ne 0) { Fail "DISPATCH: verify-dispatch 실패" }
 }
 
 # --- 결과 ---

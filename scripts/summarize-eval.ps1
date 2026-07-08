@@ -48,5 +48,11 @@ if ($agent -and $agent.checks) {
     foreach ($f in $failed) { Write-Output "  - FAIL $($f.id): $($f.detail)" }
 }
 
+$costPath = Join-Path $reportDir 'latest-cost-summary.json'
+if (Test-Path $costPath) {
+    $cost = Get-Content $costPath -Raw | ConvertFrom-Json
+    Write-Output "- cost-summary: **$($cost.total_duration_ms)ms** · cost_units=$($cost.cost_units)"
+}
+
 Write-Output ''
 Write-Output '_생성: `pwsh scripts/summarize-eval.ps1`_'
