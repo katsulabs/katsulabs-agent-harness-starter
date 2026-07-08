@@ -190,13 +190,17 @@ for f in \
   scripts/cost-summary.ps1 scripts/cost-summary.sh \
   scripts/verify-dispatch.ps1 scripts/verify-dispatch.sh \
   docs/harness/secrets-rotation.md \
-  eval/agent-tasks/expected/al-01.json; do
+  eval/agent-tasks/expected/al-01.json \
+  docs/harness/first-ticket.md docs/harness/presets/node.md \
+  docs/harness/handoffs/README.md \
+  scripts/validate-commit-msg.ps1 scripts/validate-todo-sync.ps1 \
+  scripts/validate-pr-body.ps1 scripts/validate-staged-handoff.ps1; do
   [[ -e "$f" ]] || fail "MISSING: $f"
 done
 agents="$(cat AGENTS.md)"
 grep -q '문서 전용' <<<"$agents" && fail "AGENTS.md: 코드 저장소 계약으로 갱신 필요"
 
-for skill in harness-gate pr-workflow worktree-setup dispatch; do
+for skill in harness-gate pr-workflow worktree-setup dispatch contract-handoff backend-test-gate; do
   [[ -f ".cursor/skills/$skill/SKILL.md" ]] || fail "MISSING: .cursor/skills/$skill/SKILL.md"
 done
 
@@ -207,6 +211,8 @@ if $PR_MODE; then
   commits="$(git log main..HEAD --oneline 2>/dev/null || true)"
   [[ -z "$commits" ]] && fail "PR_COMMITS: main 대비 커밋 없음"
   bash ./scripts/verify-dispatch.sh || fail "DISPATCH: verify-dispatch 실패"
+  bash ./scripts/validate-todo-sync.sh || fail "TODO_SYNC: validate-todo-sync 실패"
+  bash ./scripts/validate-commit-msg.sh -Pr || fail "COMMIT: validate-commit-msg 실패"
 fi
 
 # --- 결과 ---

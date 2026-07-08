@@ -1,6 +1,8 @@
-agent-llm-session.md
-agent-llm-session.template.md
-latest-*.json
-*-20*.json
+*
 !.gitignore
 !README.md
+agent-llm-session.md
+agent-llm-session.template.md
+pr-eval-summary.md
+latest-*.json
+*-20*.json

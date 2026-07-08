@@ -41,7 +41,10 @@ pwsh scripts/run-agent-llm-eval.ps1      # LLM 세션 (-Validate/-AutoScore)
 pwsh scripts/score-agent-llm.ps1 -Fixture # 패턴 채점 (세션: -Session)
 pwsh scripts/cost-summary.ps1              # duration 집계
 pwsh scripts/verify-dispatch.ps1           # 브랜치 규약
-pwsh scripts/summarize-eval.ps1         # PR용 eval 요약
+pwsh scripts/validate-todo-sync.ps1       # 브랜치↔todo
+pwsh scripts/validate-commit-msg.ps1 -Pr  # 커밋 TB-{id}
+pwsh scripts/validate-pr-body.ps1         # PR 본문 (선택)
+pwsh scripts/summarize-eval.ps1 -OutFile eval/reports/pr-eval-summary.md
 pwsh scripts/validate-harness.ps1 -Pr   # PR 직전
 pwsh scripts/install-githooks.ps1       # pre-commit
 ```

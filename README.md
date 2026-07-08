@@ -6,7 +6,7 @@
 
 - **Ambient**: `AGENTS.md`, `docs/harness/playbook.md`
 - **Rules**: orchestrator, editor, contract, backend, frontend, qa
-- **Skills**: harness-gate, pr-workflow, worktree-setup, dispatch
+- **Skills**: harness-gate, pr-workflow, worktree-setup, dispatch, contract-handoff, backend-test-gate
 - **Sample**: `sample/` (TB-101 mock · `npm test`)
 - **Runtime**: `validate-harness` / `validate-handoff` / `run-eval` / `run-agent-eval`, CI, hooks
 - **MCP**: `.cursor/mcp.json.example` · `docs/harness/mcp-setup.md`
@@ -27,4 +27,4 @@ pwsh scripts/install-githooks.ps1
 ./scripts/install-githooks.sh
 ```
 
-쉘 설정: `docs/harness/setup-shell.md` · 채택: `docs/harness/TEMPLATE.md` · 기여: `CONTRIBUTING.md`
+쉘 설정: `docs/harness/setup-shell.md` · 채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md`

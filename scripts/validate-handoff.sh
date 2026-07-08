@@ -36,7 +36,10 @@ test_handoff_file() {
 
 targets=(docs/harness/examples/contract-handoff.md)
 if [[ -d docs/harness/handoffs ]]; then
-  while IFS= read -r f; do targets+=("$f"); done < <(find docs/harness/handoffs -name '*.md' -type f 2>/dev/null | sort)
+  while IFS= read -r f; do
+    [[ "$(basename "$f")" == "README.md" ]] && continue
+    targets+=("$f")
+  done < <(find docs/harness/handoffs -name '*.md' -type f 2>/dev/null | sort)
 fi
 [[ ${#targets[@]} -gt 0 ]] || fail 'HANDOFF: 검사 대상 없음'
 

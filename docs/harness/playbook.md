@@ -80,7 +80,7 @@ LLM 회귀: `run-agent-llm-eval` → 응답 채점 `score-agent-llm` / `-AutoSco
 |--------|------|
 | Ambient | `AGENTS.md`, 이 playbook |
 | Rules | `.cursor/rules/*.mdc` |
-| Skills | `.cursor/skills/*` (PR, worktree, harness-gate, dispatch) |
+| Skills | `.cursor/skills/*` (PR, worktree, dispatch, contract-handoff, backend-test-gate) |
 | Runtime | hooks, scripts, CI |
 | MCP | `.cursor/mcp.json` (example 참고) · 가이드: `mcp-setup.md` |
 
@@ -88,6 +88,19 @@ LLM 회귀: `run-agent-llm-eval` → 응답 채점 `score-agent-llm` / `-AutoSco
 
 - 문서: `examples/sample-ticket.md`
 - 코드: `examples/sample-ticket-code.md` · 핸드오프: `examples/contract-handoff.md` · 스키마: `handoff-schema.md`
+
+## 실패 시
+
+| 실패 | 조치 |
+|------|------|
+| validate-harness | `playbook.md` · 링크·mdc·필수 파일 |
+| validate-handoff | `handoff-schema.md` |
+| verify-dispatch | `feature/TB-{id}-*` 브랜치 |
+| validate-todo-sync | `todo.md`에 티켓 등록 |
+| validate-commit-msg | 커밋 메시지에 `TB-{id}` |
+| run-eval | `first-ticket.md` · `presets/` |
+
+채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md` · 스택: `presets/`
 
 ## Hook fallback
 

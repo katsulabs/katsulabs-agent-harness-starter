@@ -10,6 +10,7 @@
 
 | 티켓 | DoD |
 |------|-----|
+| TB-016 | 커밋/todo/PR 게이트, 역할 스킬, presets, first-ticket, pre-commit handoff |
 | TB-015 | LLM auto-score, cost-summary, verify-dispatch, secrets-rotation |
 | TB-014 | LLM eval 세션·채점, duration 리포트, harness-smoke 연동 |
 | TB-013 | sample TB-101, dispatch 스킬, summarize-eval, secrets·LLM eval 가이드 |

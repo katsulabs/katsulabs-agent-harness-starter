@@ -46,6 +46,7 @@ $targets = @('docs/harness/examples/contract-handoff.md')
 $handoffDir = Join-Path $root 'docs/harness/handoffs'
 if (Test-Path $handoffDir) {
     $targets += @(Get-ChildItem $handoffDir -Filter '*.md' -File |
+        Where-Object { $_.Name -ne 'README.md' } |
         ForEach-Object { $_.FullName.Substring($root.Length + 1) -replace '\\', '/' })
 }
 if ($targets.Count -eq 0) {

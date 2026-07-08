@@ -48,5 +48,6 @@ git worktree remove ../.worktrees/TB-123-feature
 - [ ] `validate-harness` PASS (`.ps1` 또는 `.sh`)
 - [ ] `run-eval` 연결 또는 harness-smoke PASS 확인
 - [ ] 핸드오프: `handoff-schema.md` 팀 경로 합의
-- [ ] 샘플: `examples/sample-ticket-code.md` 시뮬레이션
+- [ ] 스택 프리셋: `presets/node.md` 등
+- [ ] `first-ticket.md`로 첫 티켓 시뮬레이션
 - [ ] MCP 필요 시 `mcp.json.example` 참고해 설정
