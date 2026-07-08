@@ -57,32 +57,13 @@
 
 branch protection: `validate`, `test` (권장)
 
-## Eval 리포트
+## Eval
 
-`harness-smoke`·`run-agent-eval` 실행 시 `eval/reports/latest-*.json` 생성. PR `## 검증 계획`에 `status` 요약 첨부.
+상세: [eval-guide.md](./eval-guide.md) · PR 요약: `summarize-eval`
 
-| 스크립트 | 용도 |
-|----------|------|
-| `scripts/validate-handoff` | handoff frontmatter·섹션 린터 |
-| `scripts/run-agent-eval` | agent-smoke 정적 프록시 (AS-01~04) |
+## 레이어
 
-수동 agent 회귀: `eval/agent-smoke.checklist.md` · LLM: `agent-llm-eval.md` · 자동 프록시: `run-agent-eval`
-
-PR 요약: `pwsh scripts/summarize-eval.ps1` (또는 `.sh`)
-
-LLM 회귀: `run-agent-llm-eval` → 응답 채점 `score-agent-llm` / `-AutoScore` · fixture CI 검증
-
-비용 추정: `cost-summary` → `latest-cost-summary.json` (duration 합산)
-
-## 3세대 레이어
-
-| 레이어 | 위치 |
-|--------|------|
-| Ambient | `AGENTS.md`, 이 playbook |
-| Rules | `.cursor/rules/*.mdc` |
-| Skills | `.cursor/skills/*` (PR, worktree, dispatch, contract-handoff, backend-test-gate) |
-| Runtime | hooks, scripts, CI |
-| MCP | `.cursor/mcp.json` (example 참고) · 가이드: `mcp-setup.md` |
+개요·다이어그램: [introduction.md](./introduction.md) (3세대 상세는 여기만)
 
 ## 샘플
 
@@ -100,7 +81,7 @@ LLM 회귀: `run-agent-llm-eval` → 응답 채점 `score-agent-llm` / `-AutoSco
 | validate-commit-msg | 커밋 메시지에 `TB-{id}` |
 | run-eval | `first-ticket.md` · `presets/` |
 
-채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md` · 스택: `presets/`
+채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md` · 용어: `glossary.md`
 
 ## Hook fallback
 

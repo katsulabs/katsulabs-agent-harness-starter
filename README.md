@@ -1,15 +1,10 @@
 # katsulabs-agent-harness-starter
 
-3세대 Agent Engineering 템플릿 — Rules + Skills + Runtime(eval/CI) + MCP 스켈레톤.
+3세대 Agent Engineering 템플릿 — **팀 소개:** [docs/harness/introduction.md](docs/harness/introduction.md)
 
 ## 포함
 
-- **Ambient**: `AGENTS.md`, `docs/harness/playbook.md`
-- **Rules**: orchestrator, editor, contract, backend, frontend, qa
-- **Skills**: harness-gate, pr-workflow, worktree-setup, dispatch, contract-handoff, backend-test-gate
-- **Sample**: `sample/` (TB-101 mock · `npm test`)
-- **Runtime**: `validate-harness` / `validate-handoff` / `run-eval` / `run-agent-eval`, CI, hooks
-- **MCP**: `.cursor/mcp.json.example` · `docs/harness/mcp-setup.md`
+레이어·역할·명령: **introduction.md** · 상세 목록은 거기서만.
 
 ## 시작
 
@@ -27,4 +22,4 @@ pwsh scripts/install-githooks.ps1
 ./scripts/install-githooks.sh
 ```
 
-쉘 설정: `docs/harness/setup-shell.md` · 채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md`
+쉘 설정: `docs/harness/setup-shell.md` · **팀 소개**: `docs/harness/introduction.md` · 채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md`

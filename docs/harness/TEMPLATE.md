@@ -31,15 +31,7 @@ git worktree remove ../.worktrees/TB-123-feature
 
 `.worktrees/`는 `.gitignore`에 추가 권장.
 
-## 3세대 레이어
-
-| 레이어 | 파일 | 용도 |
-|--------|------|------|
-| Ambient | AGENTS.md, playbook | 계약·운영 |
-| Rules | `.cursor/rules/*.mdc` | 최소 always-on + 조건부 역할 |
-| Skills | `.cursor/skills/*/SKILL.md` | PR·worktree 등 절차 |
-| Runtime | hooks, scripts, CI | 강제 검증 |
-| Integrations | MCP (선택) | 외부 도구 |
+레이어 개요: [introduction.md](./introduction.md)
 
 ## 체크리스트
 

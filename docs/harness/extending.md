@@ -1,48 +1,27 @@
 # 확장 가이드
 
-## 규칙 (기본 포함)
+globs·역할 표: `AGENTS.md` · `playbook.md` — **여기서 중복하지 않음**.
 
-| 규칙 | globs |
-|------|-------|
-| editor | `docs/**`, `.cursor/**`, `.github/**` |
-| contract | `db/**`, `**/dto/**`, `contracts/**`, `api-spec/**` |
-| backend | `modules/**`, `backend/**`, `server/**`, `api/**` |
-| frontend | `frontend/**`, `client/**`, `apps/web/**` |
-| qa | `.github/**` |
+## eval
 
-globs를 실제 경로에 맞게 수정 후 playbook·AGENTS.md 동기화.
-
-## eval (`scripts/run-eval.ps1` / `run-eval.sh`)
-
-팀 테스트 명령으로 교체. 앱 러너 없으면 `eval/harness-smoke` (handoff·agent-eval 포함).
-
-```powershell
-# npm test / mvn test / pytest 등
-pwsh scripts/validate-handoff.ps1   # handoff 변경 시
-pwsh scripts/run-agent-eval.ps1     # agent-smoke 정적 프록시
-```
-
-리포트: `eval/reports/README.md`
+`scripts/run-eval`에 팀 테스트 연결. 앱 없으면 harness-smoke.  
+**언제 무엇을:** [eval-guide.md](./eval-guide.md)
 
 ## CI
 
-`harness-gate.yml` — `validate`·`test`(ubuntu) + OS별 `*-platforms` jobs. branch protection: `validate` + `test`.
+`harness-gate.yml` · branch protection: `validate` + `test` · [operations.md](./operations.md)
 
 ## MCP
 
-1. `.cursor/mcp.json.example` 복사 → `.cursor/mcp.json`
-2. 상세: `mcp-setup.md`
-3. AGENTS.md에 사용 MCP 목록 기록
-
-MCP는 Skills와 보완: Skill이 절차, MCP가 live API.
+[mcp-setup.md](./mcp-setup.md) — Skills(절차)와 MCP(live API) 분리.
 
 ## PR 템플릿
 
-테스트·DB 항목을 스택에 맞게 조정. N/A 유지 가능.
+스택에 맞게 테스트 항목 조정. N/A 가능.
 
 ## 체크리스트
 
-- [ ] globs 수정
+- [ ] globs 수정 (`presets/` 참고)
 - [ ] run-eval 연결
 - [ ] MCP (선택)
-- [ ] branch protection `validate` + `test`
+- [ ] branch protection

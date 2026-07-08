@@ -1,5 +1,7 @@
 # 첫 티켓 30분 가이드
 
+입구: [introduction.md](./introduction.md) · Eval: [eval-guide.md](./eval-guide.md)
+
 하네스 채택 후 첫 기능 티켓을 끝까지 밟는 최소 경로.
 
 ## 0–5분: 준비

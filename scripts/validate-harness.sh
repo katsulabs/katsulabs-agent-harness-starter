@@ -194,7 +194,9 @@ for f in \
   docs/harness/first-ticket.md docs/harness/presets/node.md \
   docs/harness/handoffs/README.md \
   scripts/validate-commit-msg.ps1 scripts/validate-todo-sync.ps1 \
-  scripts/validate-pr-body.ps1 scripts/validate-staged-handoff.ps1; do
+  scripts/validate-pr-body.ps1 scripts/validate-staged-handoff.ps1 \
+  docs/harness/glossary.md docs/harness/eval-guide.md \
+  docs/harness/scripts-reference.md; do
   [[ -e "$f" ]] || fail "MISSING: $f"
 done
 agents="$(cat AGENTS.md)"

@@ -1,76 +1,77 @@
-# AGENTS.md
-
-<!-- 프로젝트 채택 시 아래 [대괄호] 항목을 실제 값으로 교체 -->
-
-## 프로젝트
-
-- **이름**: [프로젝트명]
-- **스택**: [예: Node/React, Spring/Vue, monorepo]
-- **구조**: [예: backend=server/, frontend=client/]
-
-## 에이전트 계약
-
-| 항목 | 값 |
-|------|-----|
-| 운영 참조 | `docs/harness/playbook.md` (필요 섹션만) |
-| 티켓 | `docs/harness/todo.md` |
-| 브랜치 | `feature/TB-{id}-{short-name}` |
-| 머지 | no-ff · main 직접 커밋 금지 |
-
-## 역할·경로
-
-| Agent | 경로 |
-|-------|------|
-| Editor | `docs/**`, `.cursor/**`, `.github/**` |
-| Contract | `db/**`, `**/dto/**`, `**/openapi.*`, `contracts/**`, `api-spec/**` |
-| Backend | `modules/**`, `backend/**`, `server/**`, `api/**` |
-| Frontend | `frontend/**`, `client/**`, `apps/web/**` |
-
-globs는 `.cursor/rules/*.mdc`와 동기화한다.
-
-## 검증 (실행)
-
-PowerShell **7.4+** (`pwsh`). 설치·버전: `docs/harness/setup-shell.md`
-
-```powershell
-pwsh scripts/validate-harness.ps1       # 하네스
-pwsh scripts/run-eval.ps1               # 앱 테스트 또는 harness-smoke
-pwsh scripts/validate-handoff.ps1       # handoff 린터
-pwsh scripts/run-agent-eval.ps1         # agent-smoke 정적 프록시
-pwsh scripts/run-agent-llm-eval.ps1      # LLM 세션 (-Validate/-AutoScore)
-pwsh scripts/score-agent-llm.ps1 -Fixture # 패턴 채점 (세션: -Session)
-pwsh scripts/cost-summary.ps1              # duration 집계
-pwsh scripts/verify-dispatch.ps1           # 브랜치 규약
-pwsh scripts/validate-todo-sync.ps1       # 브랜치↔todo
-pwsh scripts/validate-commit-msg.ps1 -Pr  # 커밋 TB-{id}
-pwsh scripts/validate-pr-body.ps1         # PR 본문 (선택)
-pwsh scripts/summarize-eval.ps1 -OutFile eval/reports/pr-eval-summary.md
-pwsh scripts/validate-harness.ps1 -Pr   # PR 직전
-pwsh scripts/install-githooks.ps1       # pre-commit
-```
-
-macOS / Linux / Git Bash:
-
-```bash
-./scripts/validate-harness.sh
-./scripts/run-eval.sh
-./scripts/validate-handoff.sh
-./scripts/run-agent-eval.sh
-./scripts/run-agent-llm-eval.sh
-./scripts/score-agent-llm.sh
-./scripts/cost-summary.sh
-./scripts/verify-dispatch.sh
-./scripts/summarize-eval.sh
-./scripts/validate-harness.sh -Pr
-./scripts/install-githooks.sh
-```
-
-## MCP (선택)
-
-`.cursor/mcp.json.example` · 설정: `docs/harness/mcp-setup.md`
-
-## 금지
-
-- 요청 범위 밖 diff
-- main 직접 push
-- 검증 없이 PR 생성
+# AGENTS.md
+
+<!-- 프로젝트 채택 시 [대괄호]를 실제 값으로 교체 -->
+
+## 프로젝트
+
+- **이름**: [프로젝트명]
+- **스택**: [예: Node/React, Spring/Vue, monorepo]
+- **구조**: [예: backend=server/, frontend=client/]
+
+## 에이전트 계약
+
+| 항목 | 값 |
+|------|-----|
+| 운영 참조 | `docs/harness/playbook.md` (필요 섹션만) |
+| 티켓 | `docs/harness/todo.md` |
+| 브랜치 | `feature/TB-{id}-{short-name}` |
+| 머지 | no-ff · main 직접 커밋 금지 |
+
+## 역할·경로
+
+| Agent | 경로 |
+|-------|------|
+| Editor | `docs/**`, `.cursor/**`, `.github/**` |
+| Contract | `db/**`, `**/dto/**`, `**/openapi.*`, `contracts/**`, `api-spec/**` |
+| Backend | `modules/**`, `backend/**`, `server/**`, `api/**` |
+| Frontend | `frontend/**`, `client/**`, `apps/web/**` |
+
+globs는 `.cursor/rules/*.mdc`와 동기화.
+
+## 검증 — Daily (티켓)
+
+PowerShell **7.4+** (`pwsh`). 쉘: `docs/harness/setup-shell.md`
+
+```powershell
+pwsh scripts/dispatch-prompt.ps1 -Ticket TB-xxx -Role Backend
+pwsh scripts/run-eval.ps1
+pwsh scripts/validate-handoff.ps1    # handoff 변경 시만
+```
+
+## 검증 — PR 직전
+
+```powershell
+pwsh scripts/validate-harness.ps1 -Pr
+pwsh scripts/summarize-eval.ps1 -OutFile eval/reports/pr-eval-summary.md
+```
+
+## 검증 — Advanced (선택)
+
+릴리스 전·규칙 대变更: `docs/harness/eval-guide.md` 참고.
+
+```powershell
+pwsh scripts/run-agent-llm-eval.ps1
+pwsh scripts/score-agent-llm.ps1 -Fixture
+pwsh scripts/cost-summary.ps1
+```
+
+**전체 스크립트:** `docs/harness/scripts-reference.md`
+
+macOS / Linux: `scripts/*.sh` 동일 이름.
+
+```bash
+./scripts/validate-harness.sh
+./scripts/run-eval.sh
+./scripts/validate-harness.sh -Pr
+./scripts/install-githooks.sh
+```
+
+## MCP (선택)
+
+`docs/harness/mcp-setup.md`
+
+## 금지
+
+- 요청 범위 밖 diff
+- main 직접 push
+- 검증 없이 PR 생성
