@@ -4,7 +4,7 @@
 
 | 순서 | 문서 | 대상 |
 |------|------|------|
-| 1 | [introduction.md](./introduction.md) | **팀 전체** — 이 하네스가 뭔지 |
+| 1 | [introduction.md](./introduction.md) | **개요** — 이 하네스가 뭔지 |
 | 2 | [TEMPLATE.md](./TEMPLATE.md) | 채택 담당 — 프로젝트에 붙이기 |
 | 3 | [first-ticket.md](./first-ticket.md) | 첫 연습 (30분) |
 | 4 | [AGENTS.md](../../AGENTS.md) | 에이전트 — 명령·계약 |

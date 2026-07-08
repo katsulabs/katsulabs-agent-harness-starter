@@ -8,12 +8,14 @@
 
 ## 한눈에
 
-| 세대 | 한 줄 | 강제력 |
-|------|-------|--------|
-| **1세대** | 긴 프롬프트·단일 rules 파일 | 없음 (말로만) |
-| **2세대** | Rules + 문서 (역할·규약) | 없음 (권고) |
-| **3세대** | Ambient + Rules + **Skills** + **Runtime** + MCP | **스크립트·CI·hooks** |
-| **4세대+** | 플랫폼 (오케스트레이션·관측·상태) | 런타임이 에이전트를 **대신 실행** |
+
+| 세대       | 한 줄                                              | 강제력                  |
+| -------- | ------------------------------------------------ | -------------------- |
+| **1세대**  | 긴 프롬프트·단일 rules 파일                               | 없음 (말로만)             |
+| **2세대**  | Rules + 문서 (역할·규약)                               | 없음 (권고)              |
+| **3세대**  | Ambient + Rules + **Skills** + **Runtime** + MCP | **스크립트·CI·hooks**    |
+| **4세대+** | 플랫폼 (오케스트레이션·관측·상태)                              | 런타임이 에이전트를 **대신 실행** |
+
 
 이 템플릿은 **3세대 천장**을 목표로 합니다. 4세대는 의도적으로 범위 밖입니다.
 
@@ -37,13 +39,15 @@
 
 ---
 
+
+
 ## 2세대 — 구조화된 규약
 
 **특징**
 
 - `.cursor/rules/*.mdc` — 역할·경로별 **조건부** 규칙
 - `AGENTS.md`, `playbook.md`, README로 **운영 계약** 문서화
-- 팀이 “이렇게 일하자”에 합의하지만, **실행은 사람·에이전트 재량**
+- 문서에 규약을 적어 두지만, **실행은 사람·에이전트 재량**
 
 **한계**
 
@@ -55,17 +59,21 @@
 
 ---
 
+
+
 ## 3세대 — 운영 하네스 (이 템플릿)
 
 **특징 — 다섯 레이어**
 
-| 레이어 | 역할 | 이 repo |
-|--------|------|---------|
-| Ambient | 짧은 계약, 매 턴 상주 | `AGENTS.md`, `playbook.md` |
-| Rules | 역할·globs | `.cursor/rules/*.mdc` |
-| Skills | PR·dispatch 등 **절차** | `.cursor/skills/*` |
-| Runtime | **강제** 검증 | `scripts/`, githooks, CI |
-| MCP | live API (선택) | `mcp-setup.md`, `mcp.json.example` |
+
+| 레이어     | 역할                   | 이 repo                             |
+| ------- | -------------------- | ---------------------------------- |
+| Ambient | 짧은 계약, 매 턴 상주        | `AGENTS.md`, `playbook.md`         |
+| Rules   | 역할·globs             | `.cursor/rules/*.mdc`              |
+| Skills  | PR·dispatch 등 **절차** | `.cursor/skills/`*                 |
+| Runtime | **강제** 검증            | `scripts/`, githooks, CI           |
+| MCP     | live API (선택)        | `mcp-setup.md`, `mcp.json.example` |
+
 
 **3세대의 핵심 차이**
 
@@ -75,15 +83,19 @@
 
 **이 저장소에서의 마일스톤**
 
-| 티켓 | 세대 관점에서 한 일 |
-|------|---------------------|
-| TB-009 | “3세대” 명명 · AGENTS·TEMPLATE·Skills·eval/MCP 골격 |
-| TB-010 | Runtime 크로스플랫폼 (ps1/sh, CI matrix) |
-| TB-011~012 | harness-smoke, handoff 린터, agent-eval |
-| TB-013~015 | sample, dispatch, LLM eval 스켈레톤, PR 게이트 보강 |
-| TB-016~017 | 역할 스킬·presets·문서 입구 정리 |
+
+| 티켓         | 세대 관점에서 한 일                                   |
+| ---------- | --------------------------------------------- |
+| TB-009     | “3세대” 명명 · AGENTS·TEMPLATE·Skills·eval/MCP 골격 |
+| TB-010     | Runtime 크로스플랫폼 (ps1/sh, CI matrix)            |
+| TB-011~012 | harness-smoke, handoff 린터, agent-eval         |
+| TB-013~015 | sample, dispatch, LLM eval 스켈레톤, PR 게이트 보강    |
+| TB-016~017 | 역할 스킬·presets·문서 입구 정리                        |
+
 
 ---
+
+
 
 ## 4세대+ — 에이전트 플랫폼 (범위 밖)
 
@@ -96,25 +108,22 @@
 **이 템플릿이 하지 않는 이유**
 
 - Cursor IDE·Task 도구에 **실행 런타임을 묶지 않음** (템플릿은 repo 규약)
-- LLM eval은 **수동 세션 + fixture 자동**까지 — API 호출 CI는 팀 인프라 영역
+- LLM eval은 **수동 세션 + fixture 자동**까지 — API 호출 CI는 별도 인프라 영역
 - `cost-summary` 등은 **추정·리포트**이지 관측 플랫폼이 아님
 
 플랫폼이 필요하면 이 하네스 **위에** 별도 서비스를 올리는 구성을 권장합니다.
 
 ---
 
-## 팀에 어떻게 말하면 되나
 
-- **“3세대 레이어”** = 프롬프트가 아니라 **Rules + Skills + 검증 스크립트**까지 묶은 운영 스택
-- **1·2세대도 있다** = 성숙도 단계 이름이지, Cursor 업데이트 번호가 아님
-- **우리는 3세대 템플릿** = 규칙을 CI까지 끌고 온 상태; 자동 에이전트 팜은 아님
-
----
 
 ## 관련 문서
 
-| 문서 | 내용 |
-|------|------|
-| [introduction.md](./introduction.md) | 3세대 레이어 표·다이어그램 |
-| [glossary.md](./glossary.md) | TB, handoff 등 용어 |
-| [todo.md](./todo.md) | 티켓별 구현 이력 |
+
+| 문서                                   | 내용               |
+| ------------------------------------ | ---------------- |
+| [introduction.md](./introduction.md) | 3세대 레이어 표·다이어그램  |
+| [glossary.md](./glossary.md)         | TB, handoff 등 용어 |
+| [todo.md](./todo.md)                 | 티켓별 구현 이력        |
+
+

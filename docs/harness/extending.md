@@ -4,7 +4,7 @@ globs·역할 표: `AGENTS.md` · `playbook.md` — **여기서 중복하지 않
 
 ## eval
 
-`scripts/run-eval`에 팀 테스트 연결. 앱 없으면 harness-smoke.  
+`scripts/run-eval`에 프로젝트 테스트 연결. 앱 없으면 harness-smoke.  
 **언제 무엇을:** [eval-guide.md](./eval-guide.md)
 
 ## CI

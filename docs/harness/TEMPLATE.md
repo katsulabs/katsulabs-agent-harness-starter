@@ -17,7 +17,7 @@
 1. **충돌 확인**: 기존 `.cursor/rules`, `AGENTS.md`, `.github/workflows` 백업
 2. 템플릿 파일을 **병합** (덮어쓰기 전 diff 검토)
 3. globs·경로를 기존 구조에 맞게 조정 (`.cursor/rules/backend.mdc` 등)
-4. `scripts/run-eval.ps1` / `run-eval.sh`에 팀 테스트 명령 연결
+4. `scripts/run-eval.ps1` / `run-eval.sh`에 프로젝트 테스트 명령 연결
 5. PR 템플릿 테스트 항목을 스택에 맞게 수정
 6. `validate-harness` 통과 후 첫 harness PR 생성
 
@@ -39,7 +39,7 @@ git worktree remove ../.worktrees/TB-123-feature
 - [ ] globs ↔ 실제 경로 일치
 - [ ] `validate-harness` PASS (`.ps1` 또는 `.sh`)
 - [ ] `run-eval` 연결 또는 harness-smoke PASS 확인
-- [ ] 핸드오프: `handoff-schema.md` 팀 경로 합의
+- [ ] 핸드오프: `handoff-schema.md` 경로 정하기
 - [ ] 스택 프리셋: `presets/node.md` 등
 - [ ] `first-ticket.md`로 첫 티켓 시뮬레이션
 - [ ] MCP 필요 시 `mcp.json.example` 참고해 설정

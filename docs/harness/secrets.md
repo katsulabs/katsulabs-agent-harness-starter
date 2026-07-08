@@ -18,7 +18,7 @@ cp .env.example .env
 | 변수 | 용도 |
 |------|------|
 | `GITHUB_TOKEN` | MCP GitHub · gh CLI |
-| `MCP_*` | 팀 MCP 서버별 (문서화) |
+| `MCP_*` | MCP 서버별 (문서화) |
 
 ## Cursor MCP
 
@@ -35,4 +35,4 @@ cp .env.example .env
 - [ ] `.env.example` 최신 유지
 - [ ] 회전 일정 캘린더 등록 · 상세: `secrets-rotation.md`
 
-배포 전 전체 정책은 팀 보안 기준에 따른다.
+배포 전 전체 정책은 본인 보안 기준에 따른다.

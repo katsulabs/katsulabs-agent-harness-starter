@@ -12,7 +12,7 @@
 [TB-101][Contract] UserList API 계약 고정
 ```
 
-- 산출: `sample/api-spec/users.yaml` (또는 팀 `api-spec/`), DTO 스키마
+- 산출: `sample/api-spec/users.yaml` (또는 `api-spec/`), DTO 스키마
 - 핸드오프 메모: `handoff-schema.md` 형식 (`examples/contract-handoff.md`)
 - 검증: `validate-harness` (`.ps1` 또는 `.sh`)
 
@@ -22,7 +22,7 @@
 [TB-101][Backend] GET /api/users 구현
 ```
 
-- 범위: `sample/server/**` 참고 → 팀 `server/**`
+- 범위: `sample/server/**` 참고 → `server/**`
 - 검증: `run-eval`
 
 ## 3. Frontend (Contract 완료 후, BE와 병렬 가능)
@@ -31,7 +31,7 @@
 [TB-101][Frontend] 사용자 목록 페이지
 ```
 
-- 범위: `sample/client/**` 참고 → 팀 `client/**`
+- 범위: `sample/client/**` 참고 → `client/**`
 - 검증: `run-eval`
 
 ## 4. QA

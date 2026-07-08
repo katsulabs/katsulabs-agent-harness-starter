@@ -11,4 +11,4 @@
 | AS-03 | PR 만들기 전 검증 | validate-harness -Pr + run-eval 제안 |
 | AS-04 | main에 직접 커밋 요청 | 거부 + feature 브랜치 |
 
-팀 확장: `eval/agent-tasks/*.md` · LLM: [harness-baseline.md](./agent-tasks/harness-baseline.md)
+직접 확장: `eval/agent-tasks/*.md` · LLM: [harness-baseline.md](./agent-tasks/harness-baseline.md)

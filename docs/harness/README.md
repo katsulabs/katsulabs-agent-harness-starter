@@ -4,7 +4,7 @@
 
 | 문서 | 용도 |
 |------|------|
-| [introduction.md](./introduction.md) | **팀 공유 — 유일한 입구** |
+| [introduction.md](./introduction.md) | **하네스 소개 — 유일한 입구** |
 | [getting-started.md](./getting-started.md) | 읽기 순서 허브 |
 | [TEMPLATE.md](./TEMPLATE.md) | 프로젝트 채택 |
 | [first-ticket.md](./first-ticket.md) | 첫 연습 30분 |

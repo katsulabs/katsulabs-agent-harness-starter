@@ -1,6 +1,6 @@
 # katsulabs-agent-harness-starter
 
-3세대 Agent Engineering 템플릿 — **팀 소개:** [introduction.md](docs/harness/introduction.md) · **세대 설명:** [evolution.md](docs/harness/evolution.md)
+3세대 Agent Engineering 하네스 — **소개:** [introduction.md](docs/harness/introduction.md) · **세대 설명:** [evolution.md](docs/harness/evolution.md)
 
 ## 포함
 
@@ -22,4 +22,4 @@ pwsh scripts/install-githooks.ps1
 ./scripts/install-githooks.sh
 ```
 
-쉘 설정: `docs/harness/setup-shell.md` · **팀 소개**: `docs/harness/introduction.md` · 채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md`
+쉘 설정: `docs/harness/setup-shell.md` · **하네스 소개**: `docs/harness/introduction.md` · 채택: `TEMPLATE.md` · 첫 티켓: `first-ticket.md`
