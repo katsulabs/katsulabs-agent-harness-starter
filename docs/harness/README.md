@@ -11,6 +11,7 @@
 | [playbook.md](./playbook.md) | 에이전트 운영 |
 | [eval-guide.md](./eval-guide.md) | Eval 결정 트리 |
 | [glossary.md](./glossary.md) | 용어 |
+| [evolution.md](./evolution.md) | 1·2·3세대 진화 모델 |
 | [scripts-reference.md](./scripts-reference.md) | 전체 스크립트 |
 | [extending.md](./extending.md) | MCP·CI 확장 |
 | [operations.md](./operations.md) | GitHub BP |

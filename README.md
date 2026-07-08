@@ -1,6 +1,6 @@
 # katsulabs-agent-harness-starter
 
-3세대 Agent Engineering 템플릿 — **팀 소개:** [docs/harness/introduction.md](docs/harness/introduction.md)
+3세대 Agent Engineering 템플릿 — **팀 소개:** [introduction.md](docs/harness/introduction.md) · **세대 설명:** [evolution.md](docs/harness/evolution.md)
 
 ## 포함
 

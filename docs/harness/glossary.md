@@ -9,4 +9,4 @@
 | **worktree** | 티켓당 격리 작업 디렉터리 |
 | **no-ff** | merge 시 fast-forward 금지 (이력 보존) |
 | **harness-smoke** | 하네스 자체 건강 검사 (`run-eval` 폴백에 포함) |
-| **3세대 레이어** | Ambient · Rules · Skills · Runtime · MCP — `introduction.md` |
+| **3세대 레이어** | Ambient · Rules · Skills · Runtime · MCP — [introduction.md](./introduction.md) · [evolution.md](./evolution.md) |
