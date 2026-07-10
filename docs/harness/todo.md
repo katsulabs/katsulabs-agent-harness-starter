@@ -10,6 +10,7 @@
 
 | 티켓 | DoD |
 |------|-----|
+| TB-020 | how-to-use, bootstrap-prompts, README 학습 순서, multi-agent-dispatch 예시 |
 | TB-016 | 커밋/todo/PR 게이트, 역할 스킬, presets, first-ticket, pre-commit handoff |
 | TB-015 | LLM auto-score, cost-summary, verify-dispatch, secrets-rotation |
 | TB-014 | LLM eval 세션·채점, duration 리포트, harness-smoke 연동 |

@@ -6,6 +6,8 @@
 | 기능 | 사용자 목록 API + 목록 UI |
 | DoD | Contract 고정 → BE/FE 구현 → 테스트 → PR |
 
+**Multi-agent 명령 전문:** [multi-agent-dispatch.md](./multi-agent-dispatch.md)
+
 ## 1. Contract
 
 ```
