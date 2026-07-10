@@ -38,7 +38,8 @@
 
 병렬 티켓은 worktree 1개/티켓. 한 worktree 내 Backend·Frontend만 병렬 디스패치.
 
-프롬프트 생성: `dispatch-prompt` · **PR 전 검증:** `verify-dispatch` (브랜치 `feature/TB-{id}-*`)
+프롬프트 생성: `dispatch-prompt` · **PR 전 검증:** `verify-dispatch` (브랜치 `feature/TB-{id}-*`)  
+명령 예시: [examples/multi-agent-dispatch.md](./examples/multi-agent-dispatch.md)
 
 ## 샘플 앱 (TB-101)
 
@@ -68,7 +69,8 @@ branch protection: `validate`, `test` (권장)
 ## 샘플
 
 - 문서: `examples/sample-ticket.md`
-- 코드: `examples/sample-ticket-code.md` · 핸드오프: `examples/contract-handoff.md` · 스키마: `handoff-schema.md`
+- 코드: `examples/sample-ticket-code.md` · multi-agent: `examples/multi-agent-dispatch.md`
+- 핸드오프: `examples/contract-handoff.md` · 스키마: `handoff-schema.md`
 
 ## 실패 시
 

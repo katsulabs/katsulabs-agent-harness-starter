@@ -23,4 +23,5 @@ pwsh scripts/dispatch-prompt.ps1 -Ticket TB-101 -Role Contract
 3. PR 전 `verify-dispatch` — 브랜치 `feature/TB-{id}-*` 필수
 4. 종료 시 산출물 경로·검증 결과를 메인 세션에 전달
 
-스크립트: `scripts/dispatch-prompt.ps1` / `.sh` · 규약: `playbook.md` 서브에이전트 섹션
+스크립트: `scripts/dispatch-prompt.ps1` / `.sh` · 규약: `playbook.md` 서브에이전트 섹션  
+예시: `docs/harness/examples/multi-agent-dispatch.md`

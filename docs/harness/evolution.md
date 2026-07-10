@@ -120,10 +120,12 @@
 ## 관련 문서
 
 
-| 문서                                   | 내용               |
-| ------------------------------------ | ---------------- |
-| [introduction.md](./introduction.md) | 3세대 레이어 표·다이어그램  |
-| [glossary.md](./glossary.md)         | TB, handoff 등 용어 |
-| [todo.md](./todo.md)                 | 티켓별 구현 이력        |
+| 문서 | 내용 |
+|------|------|
+| [introduction.md](./introduction.md) | 3세대 레이어 표·다이어그램 |
+| [bootstrap-prompts.md](./bootstrap-prompts.md) | 빈 폴더에서 1·2·3세대 생성 프롬프트 |
+| [how-to-use.md](./how-to-use.md) | 템플릿 채택 vs Bootstrap |
+| [glossary.md](./glossary.md) | TB, handoff 등 용어 |
+| [todo.md](./todo.md) | 티켓별 구현 이력 |
 
 

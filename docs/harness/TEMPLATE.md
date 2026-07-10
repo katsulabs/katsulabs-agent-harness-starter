@@ -2,6 +2,8 @@
 
 `katsulabs-agent-harness-starter`를 개발 프로젝트에 붙이는 절차.
 
+**경로 선택(템플릿 vs 빈 폴더 Bootstrap):** [how-to-use.md](./how-to-use.md) — 이 문서는 **경로 A(템플릿 채택)** 체크리스트다.
+
 ## 신규 저장소
 
 1. 이 템플릿 파일을 프로젝트 루트에 복사

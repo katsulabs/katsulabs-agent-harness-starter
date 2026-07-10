@@ -1,6 +1,7 @@
 # Agent Harness 소개
 
-이 하네스의 **유일한 입구**. Cursor **운영 방식**을 규칙·검증·CI로 고정해 둔 **개인 에이전트 하네스** 저장소입니다.
+이 하네스의 **개념 입구** (레이어·왜 쓰나·명령 요약).  
+**학습은 루트 [README.md](../../README.md)에서 시작**하고, 읽기 순서는 [getting-started.md](./getting-started.md)를 따른다.
 
 ---
 
@@ -85,6 +86,8 @@ todo → worktree/브랜치 → Contract → BE/FE(병렬) → QA → PR → CI 
 
 ## 채택 3단계
 
+**신규 프로젝트 경로(A/B)부터:** [how-to-use.md](./how-to-use.md)
+
 1. [TEMPLATE.md](./TEMPLATE.md) — 붙이기  
 2. `AGENTS.md` · globs · `run-eval` — 맞추기  
 3. githooks · CI · branch protection — 게이트  
@@ -109,9 +112,12 @@ todo → worktree/브랜치 → Contract → BE/FE(병렬) → QA → PR → CI 
 
 | 대상 | 문서 |
 |------|------|
-| **입구 (여기서 시작)** | `introduction.md` |
+| **학습 시작 (저장소 입구)** | 루트 `README.md` → `getting-started.md` |
+| **개념 (레이어 표는 여기만)** | `introduction.md` |
 | 세대·진화 | `evolution.md` |
-| 채택 | `TEMPLATE.md` |
+| 신규 프로젝트 How to use | `how-to-use.md` |
+| 빈 폴더 Bootstrap 프롬프트 | `bootstrap-prompts.md` |
+| 채택 체크리스트 | `TEMPLATE.md` |
 | 첫 연습 | `first-ticket.md` |
 | 에이전트 | `AGENTS.md` → `playbook.md` (필요 섹션) |
 | Eval | `eval-guide.md` |
@@ -123,6 +129,7 @@ todo → worktree/브랜치 → Contract → BE/FE(병렬) → QA → PR → CI 
 
 ## FAQ
 
+**clone 후 Bootstrap 프롬프트를 또 붙여?** — 아니요. clone/템플릿이면 [how-to-use.md](./how-to-use.md) **경로 A**. Bootstrap은 빈 폴더(**경로 B**)용.  
 **Cursor 없이?** — 브랜치·handoff·스크립트 게이트는 사람에게도 유효.  
 **스크립트 많음?** — Daily/PR 4개면 됨. 나머지는 CI·`-Pr`.  
 **LLM CI 회귀?** — 정적·fixture까지 자동. 실제 LLM 세션은 [eval-guide.md](./eval-guide.md) (선택).
