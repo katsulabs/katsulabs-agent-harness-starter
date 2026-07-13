@@ -18,6 +18,7 @@
 | [glossary.md](./glossary.md) | 용어 |
 | [scripts-reference.md](./scripts-reference.md) | 전체 스크립트 |
 | [extending.md](./extending.md) | MCP·CI 확장 |
+| [third-party-plugins.md](./third-party-plugins.md) | Superpowers·gstack·CRG 등 서드파티 통합 |
 | [operations.md](./operations.md) | GitHub BP |
 | [examples/](./examples/) | 샘플 |
 | [todo.md](./todo.md) | 티켓/DoD |
