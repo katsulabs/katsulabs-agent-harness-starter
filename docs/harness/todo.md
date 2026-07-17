@@ -4,7 +4,7 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| TB-021 | 진행 | 멀티에이전트 동시 실행 안전성: 1워크트리=1인스턴스 규칙 명문화, todo.md 브랜치-한정 편집 규약, eval 산출물 티켓별 경로 분리 (.sh+.ps1), validate-harness -Pr + run-eval PASS |
+| TB-021 | 진행 | 멀티에이전트 동시 실행 안전성: 1워크트리=1인스턴스 규칙 명문화, todo.md 브랜치-한정 편집 규약, eval 산출물 티켓별 경로 분리 (.sh+.ps1), 기존 깨진 링크·AL-09/AL-13 fixture 정합, validate-harness -Pr + run-eval PASS |
 
 ## 완료
 
