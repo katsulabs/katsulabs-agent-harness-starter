@@ -7,7 +7,7 @@
 추가 작업 없이 그대로 사용합니다. Single Source of Truth:
 
 - `.cursor/rules/*.mdc`
-- [agent-hierarchy.md](./agent-hierarchy.md)
+- [playbook.md](./playbook.md)
 
 ## 풀스택 앱으로 확장
 
@@ -24,9 +24,9 @@
 
 ### 권장 순서
 
-1. `agent-hierarchy.md` 역할 표를 코드 경로로 재작성
+1. `playbook.md` 역할 표를 코드 경로로 재작성
 2. 각 `.mdc`의 globs·범위·금지 규칙 갱신
-3. `reference-baseline.md` 테스트 게이트 명령 교체
+3. `eval-guide.md` 테스트 게이트 명령 교체
 4. `.github/PULL_REQUEST_TEMPLATE.md` 체크리스트 교체
 5. CI workflow에 테스트 job 추가
 

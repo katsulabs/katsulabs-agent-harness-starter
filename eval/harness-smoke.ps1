@@ -8,7 +8,10 @@
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $root
-$reportDir = Join-Path $root 'eval/reports'
+# 리포트 경로: 브랜치 TB-{id} 기준 격리 (동시 실행 클로버 방지)
+$branch = (git branch --show-current 2>$null)
+$reportSub = if ($branch -match 'TB-(\d+)') { "eval/reports/TB-$($Matches[1])" } else { 'eval/reports' }
+$reportDir = Join-Path $root $reportSub
 New-Item -ItemType Directory -Force -Path $reportDir | Out-Null
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
 

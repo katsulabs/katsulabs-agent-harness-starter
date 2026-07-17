@@ -3,7 +3,14 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-REPORT_DIR="$ROOT/eval/reports"
+ROOT_REPORTS="$ROOT/eval/reports"
+# 티켓 격리 리포트 우선, 없으면 루트 폴백
+_branch="$(git branch --show-current 2>/dev/null || true)"
+if [[ "$_branch" =~ TB-([0-9]+) ]]; then TICKET_REPORTS="$ROOT/eval/reports/TB-${BASH_REMATCH[1]}"; else TICKET_REPORTS="$ROOT_REPORTS"; fi
+resolve_report() {
+  local n="$1"
+  if [[ -f "$TICKET_REPORTS/$n" ]]; then echo "$TICKET_REPORTS/$n"; else echo "$ROOT_REPORTS/$n"; fi
+}
 
 read_field() {
   local file="$1" field="$2"
@@ -14,8 +21,8 @@ read_field() {
 echo '## Eval 요약'
 echo
 
-smoke="$REPORT_DIR/latest-harness-smoke.json"
-agent="$REPORT_DIR/latest-agent-eval.json"
+smoke="$(resolve_report latest-harness-smoke.json)"
+agent="$(resolve_report latest-agent-eval.json)"
 
 if [[ -f "$smoke" ]]; then
   st=$(read_field "$smoke" status || echo '?')

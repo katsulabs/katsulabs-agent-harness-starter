@@ -20,10 +20,13 @@
 - `main` 직접 커밋 금지 · worktree 1개/기능 · no-ff
 - 흐름: worktree → 구현 → validate → run-eval → PR → CI → 머지
 - 순차: Contract → Backend/Frontend(병렬 가능) → QA. 불명확하면 순차.
+- `todo.md`는 **자기 티켓 브랜치에서만** 편집. 남 티켓 행 수정 금지 · 통합은 머지 시점에만.
 
 ## Worktree
 
 스킬: `worktree-setup` · 경로: `../.worktrees/TB-{id}-{name}` · `.gitignore` 등록
+
+**동시 실행 규칙**: 1 워킹트리 = 1 인스턴스. 여러 인스턴스를 동시에 돌릴 때는 **반드시 티켓별 worktree**로 분리(같은 체크아웃 공유 금지 — `.git/index`·`todo.md`·`eval/reports` 경쟁). eval 산출물은 브랜치 티켓 기준 `eval/reports/TB-{id}/`로 자동 격리된다.
 
 ## 서브에이전트 디스패치
 
