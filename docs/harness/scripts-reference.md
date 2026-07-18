@@ -10,7 +10,9 @@
 | `validate-handoff` | handoff 변경 | frontmatter·섹션 |
 | `validate-status` | 상태 채널 변경 | frontmatter·역할 상태 표 |
 | `validate-staged-handoff` | pre-commit | staged handoff만 |
-| `dispatch-prompt` | 티켓 착수 | 서브에이전트 프롬프트 |
+| `dispatch-plan` | 티켓 착수 | 전 역할 프롬프트 + 상태 스켈레톤 |
+| `dispatch-prompt` | 티켓 착수 | 역할별 단건 프롬프트 |
+| `collect-handoff` | PR 전 | 전 역할 `done`+`verified` 게이트 |
 | `verify-dispatch` | PR | `feature/TB-{id}-*` 브랜치 |
 | `validate-todo-sync` | PR | 브랜치 ↔ todo.md |
 | `validate-commit-msg -Pr` | PR | 커밋에 TB-{id} |

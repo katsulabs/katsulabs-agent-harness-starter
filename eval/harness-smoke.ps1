@@ -35,6 +35,13 @@ Add-Check 'validate-handoff' ($LASTEXITCODE -eq 0) 'validate-handoff 실패'
 & pwsh -NoProfile -File (Join-Path $root 'scripts/validate-status.ps1')
 Add-Check 'validate-status' ($LASTEXITCODE -eq 0) 'validate-status 실패'
 
+# 2c. 오케스트레이션 스캐폴딩
+& pwsh -NoProfile -File (Join-Path $root 'scripts/dispatch-plan.ps1') -Ticket TB-000 -DryRun | Out-Null
+Add-Check 'dispatch-plan' ($LASTEXITCODE -eq 0) 'dispatch-plan 실패'
+
+& pwsh -NoProfile -File (Join-Path $root 'scripts/collect-handoff.ps1') -Path 'docs/harness/examples/status-complete.md' | Out-Null
+Add-Check 'collect-handoff' ($LASTEXITCODE -eq 0) 'collect-handoff 실패'
+
 # 3. agent-eval 프록시
 & pwsh -NoProfile -File (Join-Path $root 'scripts/run-agent-eval.ps1')
 Add-Check 'agent-eval' ($LASTEXITCODE -eq 0) 'agent-eval 실패'
@@ -55,8 +62,11 @@ foreach ($f in @(
     'docs/harness/mcp-setup.md',
     'scripts/validate-handoff.ps1',
     'scripts/validate-status.ps1',
+    'scripts/dispatch-plan.ps1',
+    'scripts/collect-handoff.ps1',
     'docs/harness/status-schema.md',
     'docs/harness/examples/status-example.md',
+    'docs/harness/examples/status-complete.md',
     'scripts/run-agent-eval.ps1',
     'scripts/dispatch-prompt.ps1',
     'scripts/summarize-eval.ps1',

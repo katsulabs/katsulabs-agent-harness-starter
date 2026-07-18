@@ -27,6 +27,8 @@ record() {
 bash ./scripts/validate-harness.sh; record 'validate-harness' $? 'validate-harness 실패'
 bash ./scripts/validate-handoff.sh; record 'validate-handoff' $? 'validate-handoff 실패'
 bash ./scripts/validate-status.sh; record 'validate-status' $? 'validate-status 실패'
+bash ./scripts/dispatch-plan.sh TB-000 --dry-run >/dev/null; record 'dispatch-plan' $? 'dispatch-plan 실패'
+bash ./scripts/collect-handoff.sh --path docs/harness/examples/status-complete.md >/dev/null; record 'collect-handoff' $? 'collect-handoff 실패'
 bash ./scripts/run-agent-eval.sh; record 'agent-eval' $? 'agent-eval 실패'
 
 bash ./scripts/run-agent-llm-eval.sh; record 'agent-llm-eval' $? 'agent-llm-eval 실패'
@@ -38,8 +40,8 @@ bash ./scripts/verify-dispatch.sh; record 'verify-dispatch' $? 'verify-dispatch 
 for f in eval/agent-smoke.checklist.md docs/harness/handoff-schema.md docs/harness/mcp-setup.md \
   scripts/validate-handoff.sh scripts/validate-status.sh scripts/run-agent-eval.sh scripts/run-agent-llm-eval.sh \
   scripts/score-agent-llm.sh scripts/cost-summary.sh scripts/verify-dispatch.sh \
-  scripts/dispatch-prompt.sh scripts/summarize-eval.sh \
-  docs/harness/status-schema.md docs/harness/examples/status-example.md \
+  scripts/dispatch-prompt.sh scripts/dispatch-plan.sh scripts/collect-handoff.sh scripts/summarize-eval.sh \
+  docs/harness/status-schema.md docs/harness/examples/status-example.md docs/harness/examples/status-complete.md \
   sample/package.json .cursor/skills/dispatch/SKILL.md; do
   if [[ -f "$f" ]]; then record "artifact:$f" 0 ok; else record "artifact:$f" 1 "MISSING: $f"; fi
 done
