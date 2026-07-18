@@ -4,12 +4,13 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| TB-021 | 진행 | 멀티에이전트 동시 실행 안전성: 1워크트리=1인스턴스 규칙 명문화, todo.md 브랜치-한정 편집 규약, eval 산출물 티켓별 경로 분리 (.sh+.ps1), 기존 깨진 링크·AL-09/AL-13 fixture 정합, validate-harness -Pr + run-eval PASS |
+| — | — | 활성 티켓 없음 |
 
 ## 완료
 
 | 티켓 | DoD |
 |------|-----|
+| TB-021 | 멀티에이전트 동시 실행 안전성: 1워크트리=1인스턴스·todo 브랜치-한정 규약, eval 산출물 티켓 경로 격리 (.sh+.ps1), 기존 링크·AL-09/AL-13 fixture·verify-dispatch CI detached-HEAD 폴백 수정 (PR #11) |
 | TB-020 | how-to-use, bootstrap-prompts, README 학습 순서, multi-agent-dispatch 예시 |
 | TB-016 | 커밋/todo/PR 게이트, 역할 스킬, presets, first-ticket, pre-commit handoff |
 | TB-015 | LLM auto-score, cost-summary, verify-dispatch, secrets-rotation |
