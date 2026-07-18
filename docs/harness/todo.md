@@ -4,7 +4,7 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| — | — | 활성 티켓 없음 |
+| TB-028 | 진행 | examples/multi-agent-walkthrough.md 추가(dispatch-plan→collect-handoff 실제 worktree 흐름) + playbook·multi-agent-dispatch 링크, validate-harness -Pr PASS |
 
 ## 완료
 
