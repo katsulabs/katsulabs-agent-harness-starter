@@ -4,12 +4,13 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| TB-022 | 진행 | 공유 상태 채널: status-schema·예시, validate-status 린터 (.sh+.ps1), playbook 구두전달→상태파일, harness-smoke·매니페스트 반영, validate-harness -Pr + run-eval PASS |
+| — | — | 활성 티켓 없음 |
 
 ## 완료
 
 | 티켓 | DoD |
 |------|-----|
+| TB-022 | 공유 상태 채널: status-schema·예시, validate-status 린터 (.sh+.ps1), validate-handoff status 스킵, playbook 구두전달→상태파일 append, harness-smoke·매니페스트 반영 (PR #13) |
 | TB-021 | 멀티에이전트 동시 실행 안전성: 1워크트리=1인스턴스·todo 브랜치-한정 규약, eval 산출물 티켓 경로 격리 (.sh+.ps1), 기존 링크·AL-09/AL-13 fixture·verify-dispatch CI detached-HEAD 폴백 수정 (PR #11) |
 | TB-020 | how-to-use, bootstrap-prompts, README 학습 순서, multi-agent-dispatch 예시 |
 | TB-016 | 커밋/todo/PR 게이트, 역할 스킬, presets, first-ticket, pre-commit handoff |
