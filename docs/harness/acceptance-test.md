@@ -64,7 +64,7 @@ rg 'Flyway|modules/\*\*|Vitest|backend test gate' docs .github \
 
 ### 2-2. 역할 표 대조
 
-[agent-hierarchy.md](./agent-hierarchy.md) 역할 표와 각 `.mdc`의 **수정 범위**가 일치하는지 확인합니다.
+[playbook.md](./playbook.md) 역할 표와 각 `.mdc`의 **수정 범위**가 일치하는지 확인합니다.
 
 | Agent | `.mdc` 허용 경로 | 문서 관점 |
 |-------|------------------|-----------|
@@ -103,7 +103,7 @@ DoD 예: `getting-started.md`에 acceptance-test 링크 1줄 추가 (이미 있�
 
 ### 3-2. Worktree
 
-[workflow.md#worktree-레시피](./workflow.md#worktree-레시피)대로:
+[playbook.md](./playbook.md) Worktree 섹션대로:
 
 ```bash
 git fetch origin main
@@ -131,7 +131,7 @@ Cursor에서 아래 순서로 진행합니다. 각 턴 프롬프트 **첫 줄에
 
 **PASS 조건:**
 
-- [ ] 각 단계 diff가 [agent-hierarchy.md](./agent-hierarchy.md) 수정 범위 안
+- [ ] 각 단계 diff가 [playbook.md](./playbook.md) 수정 범위 안
 - [ ] Contract 산출물(범위 요약)이 다음 턴에 전달됨
 - [ ] `./scripts/doc-quality-gate.sh` PASS
 
@@ -178,7 +178,7 @@ git branch -d feature/TB-999-acceptance-drill   # 머지 후
 - [ ] Docs Quality Gate CI PASSED
 
 ### 정합성
-- [ ] agent-hierarchy ↔ .mdc 역할/경로 일치
+- [ ] playbook 역할표 ↔ .mdc 역할/경로 일치
 - [ ] 풀스택 잔재 없음 (customization.md 제외)
 - [ ] PR 템플릿 = document quality gate
 
@@ -204,12 +204,12 @@ git branch -d feature/TB-999-acceptance-drill   # 머지 후
 | 문장 품질·명확성 | 사람/QA Agent 리뷰 |
 | GitHub branch protection | repo 설정에서 `main` 보호 확인 |
 | no-ff merge | merge 버튼 옵션·팀 규칙 |
-| KPI 수치 | 1~2주 운영 후 [workflow.md#운영-지표-kpi](./workflow.md#운영-지표-kpi) |
+| KPI 수치 | 1~2주 운영 후 별도 측정 |
 
 ---
 
 ## 관련 문서
 
-- [reference-baseline.md](./reference-baseline.md) — 문서 품질 게이트 정의
+- [eval-guide.md](./eval-guide.md) — 문서 품질 게이트 정의
 - [getting-started.md](./getting-started.md) — 온보딩 체크리스트
-- [workflow.md](./workflow.md) — worktree, Sub-agent, handoff
+- [playbook.md](./playbook.md) — worktree, Sub-agent, handoff

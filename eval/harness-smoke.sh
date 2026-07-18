@@ -4,7 +4,9 @@ set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
-REPORT_DIR="$ROOT/eval/reports"
+# 리포트 경로: 브랜치 TB-{id} 기준 격리 (동시 실행 클로버 방지)
+_branch="$(git branch --show-current 2>/dev/null || true)"
+if [[ "$_branch" =~ TB-([0-9]+) ]]; then REPORT_DIR="$ROOT/eval/reports/TB-${BASH_REMATCH[1]}"; else REPORT_DIR="$ROOT/eval/reports"; fi
 mkdir -p "$REPORT_DIR"
 
 failures=()

@@ -5,11 +5,17 @@
 .NOTES
   LLM 시뮬레이션은 eval/agent-smoke.checklist.md 수동. macOS/Linux: ./scripts/run-agent-eval.sh
 #>
-param([string]$ReportDir = 'eval/reports')
+param([string]$ReportDir = '')
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $root
+
+# 리포트 경로: 인자 우선 · 없으면 브랜치 TB-{id} 기준 격리 (동시 실행 클로버 방지)
+if (-not $ReportDir) {
+    $branch = (git branch --show-current 2>$null)
+    $ReportDir = if ($branch -match 'TB-(\d+)') { "eval/reports/TB-$($Matches[1])" } else { 'eval/reports' }
+}
 
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
 $checks = [System.Collections.Generic.List[hashtable]]::new()

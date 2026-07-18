@@ -9,10 +9,15 @@ param([string]$OutFile)
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
-$reportDir = Join-Path $root 'eval/reports'
+$rootReports = Join-Path $root 'eval/reports'
+$reportDir = $rootReports  # session·cost는 루트 유지
+# 티켓 격리 리포트 우선, 없으면 루트 폴백
+$branch = (git branch --show-current 2>$null)
+$ticketReports = if ($branch -match 'TB-(\d+)') { Join-Path $root "eval/reports/TB-$($Matches[1])" } else { $rootReports }
 
 function Read-Report([string]$name) {
-    $path = Join-Path $reportDir $name
+    $path = Join-Path $ticketReports $name
+    if (-not (Test-Path $path)) { $path = Join-Path $rootReports $name }
     if (-not (Test-Path $path)) { return $null }
     Get-Content -LiteralPath $path -Raw | ConvertFrom-Json
 }

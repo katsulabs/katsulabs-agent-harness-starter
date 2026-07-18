@@ -6,11 +6,11 @@
 
 | 우선순위 | 항목 | 상태 | 변경 |
 |----------|------|------|------|
-| P0 | rules ↔ docs 정합 | 완료 | `agent-hierarchy.md`, PR 템플릿, `getting-started.md` 풀스택 잔재 제거 |
-| P1 | 문서 품질 게이트 | 완료 | `reference-baseline.md`, `scripts/doc-quality-gate.sh` |
-| P1 | worktree + Sub-agent | 완료 | `workflow.md` 레시피·분배 섹션 |
+| P0 | rules ↔ docs 정합 | 완료 | `playbook.md`, PR 템플릿, `getting-started.md` 풀스택 잔재 제거 |
+| P1 | 문서 품질 게이트 | 완료 | `eval-guide.md`, `scripts/doc-quality-gate.sh` |
+| P1 | worktree + Sub-agent | 완료 | `playbook.md` 레시피·분배 섹션 |
 | P2 | Hook/CI 명확화 | 완료 | Hook=선택, 수동 handoff=기본; KPI 문서화 |
-| P2 | Backend/Frontend 재정의 | 완료 | `agent-hierarchy.md` 문서 관점 명시 |
+| P2 | Backend/Frontend 재정의 | 완료 | `playbook.md` 문서 관점 명시 |
 | P3 | Docs CI | 완료 | `.github/workflows/docs-quality-gate.yml` |
 | — | 인수 테스트 런북 | 완료 | `acceptance-test.md` |
 
