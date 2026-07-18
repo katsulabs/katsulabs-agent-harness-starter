@@ -63,10 +63,24 @@ todo → worktree/브랜치 → Contract → BE/FE(병렬) → QA → PR → CI 
 
 ---
 
+## 멀티에이전트 (동시·협업·조정)
+
+여러 인스턴스·서브에이전트를 병렬로 운영할 때의 안전·인계·조정 장치.
+
+| 관심사 | 장치 | 위치 |
+|--------|------|------|
+| 동시 실행 안전 | 1워크트리=1인스턴스 · eval 산출물 티켓 경로 격리(`eval/reports/TB-{id}/`) | [playbook.md](./playbook.md) 동시 실행 규칙 |
+| 협업 인계 | 커밋되는 상태 채널(구두 전달 대체) | `TB-{id}-status.md` · [status-schema.md](./status-schema.md) · `validate-status` |
+| 작업 조정 | 플랜 생성 → PR 전 수렴 게이트 | `dispatch-plan` · `collect-handoff` |
+
+흐름: `dispatch-plan TB-{id}` → 역할 병렬 작업(각자 상태 append) → `collect-handoff TB-{id}`(전 역할 `done`) → PR.
+
+---
+
 ## 명령 (외울 것만)
 
-**매 티켓:** `dispatch-prompt` · `run-eval`  
-**PR 직전:** `validate-harness -Pr` · `summarize-eval -OutFile …`  
+**매 티켓:** `dispatch-plan`(또는 역할별 `dispatch-prompt`) · `run-eval`  
+**PR 직전:** `collect-handoff` · `validate-harness -Pr` · `summarize-eval -OutFile …`  
 전체 목록: [scripts-reference.md](./scripts-reference.md) · Eval 구분: [eval-guide.md](./eval-guide.md)
 
 ---
@@ -102,6 +116,8 @@ todo → worktree/브랜치 → Contract → BE/FE(병렬) → QA → PR → CI 
 |--------|------|
 | `validate-harness` | 커밋·CI |
 | `run-eval` | 티켓·CI (앱 + harness-smoke) |
+| `validate-status` | 상태 채널 변경 시 |
+| `collect-handoff` | PR 전 (전 역할 `done`) |
 | `validate-harness -Pr` | PR (브랜치·todo·커밋·dispatch) |
 
 실패 시: [playbook.md](./playbook.md) **실패 시** · 로그 예: `FAIL: validate-todo-sync — TB-102 가 todo.md에 없음`
