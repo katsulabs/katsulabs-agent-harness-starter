@@ -4,12 +4,13 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| TB-027 | 진행 | 루트 README에 멀티에이전트 섹션 추가(관심사→장치 표 + introduction·status-schema 링크), validate-harness -Pr PASS |
+| — | — | 활성 티켓 없음 |
 
 ## 완료
 
 | 티켓 | DoD |
 |------|-----|
+| TB-027 | 루트 README에 멀티에이전트 섹션 추가 (관심사→장치 표 + introduction·status-schema 링크) (PR #23) |
 | TB-026 | .gitignore에 .DS_Store 추가 (PR #21) |
 | TB-025 | 초기 진단 리뷰(multi-agent-readiness-review.md)를 docs/harness/로 이관 + 이력 주석 (PR #19) |
 | TB-024 | introduction.md 멀티에이전트 3-Phase(동시·협업·조정) 섹션 + 명령·검증 표 반영 (PR #17) |
