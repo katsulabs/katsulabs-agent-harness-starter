@@ -4,12 +4,13 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| TB-025 | 진행 | 초기 진단 리뷰를 docs/harness/로 이관 + 이력 주석(갭 TB-021~024 해소), validate-harness -Pr PASS |
+| — | — | 활성 티켓 없음 |
 
 ## 완료
 
 | 티켓 | DoD |
 |------|-----|
+| TB-025 | 초기 진단 리뷰(multi-agent-readiness-review.md)를 docs/harness/로 이관 + 이력 주석 (PR #19) |
 | TB-024 | introduction.md 멀티에이전트 3-Phase(동시·협업·조정) 섹션 + 명령·검증 표 반영 (PR #17) |
 | TB-023 | 오케스트레이션 스캐폴딩: dispatch-plan(전 역할 프롬프트+상태 스켈레톤)·collect-handoff(전 역할 done 게이트) (.sh+.ps1), 완료 상태 예시, harness-smoke·매니페스트·playbook 반영 (PR #15) |
 | TB-022 | 공유 상태 채널: status-schema·예시, validate-status 린터 (.sh+.ps1), validate-handoff status 스킵, playbook 구두전달→상태파일 append, harness-smoke·매니페스트 반영 (PR #13) |
