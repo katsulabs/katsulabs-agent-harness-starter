@@ -40,7 +40,7 @@ test_status_file() {
   [[ $seen -gt 0 ]] || fail "STATUS_ROWS: $rel — 역할 행 없음"
 }
 
-targets=(docs/harness/examples/status-example.md)
+targets=(docs/harness/examples/status-example.md docs/harness/examples/status-complete.md)
 if [[ -d docs/harness/handoffs ]]; then
   while IFS= read -r f; do targets+=("$f"); done < <(find docs/harness/handoffs -name '*-status.md' -type f 2>/dev/null | sort)
 fi

@@ -48,7 +48,7 @@ function Test-StatusFile([string]$relPath) {
     if ($rows -eq 0) { Fail "STATUS_ROWS: $relPath — 역할 행 없음" }
 }
 
-$targets = @('docs/harness/examples/status-example.md')
+$targets = @('docs/harness/examples/status-example.md', 'docs/harness/examples/status-complete.md')
 $handoffDir = Join-Path $root 'docs/harness/handoffs'
 if (Test-Path $handoffDir) {
     $targets += @(Get-ChildItem $handoffDir -Filter '*-status.md' -File |

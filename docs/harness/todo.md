@@ -4,7 +4,7 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| — | — | 활성 티켓 없음 |
+| TB-023 | 진행 | 오케스트레이션 스캐폴딩: dispatch-plan(전 역할 프롬프트+상태 스켈레톤)·collect-handoff(전 역할 done 게이트) (.sh+.ps1), 완료 상태 예시, harness-smoke·매니페스트·playbook·dispatch 반영, validate-harness -Pr + run-eval PASS |
 
 ## 완료
 

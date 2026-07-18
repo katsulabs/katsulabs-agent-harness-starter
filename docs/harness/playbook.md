@@ -49,7 +49,8 @@
 - 각 역할은 **자기 행만** append (`status`: `todo`/`in_progress`/`done`/`blocked`) → 머지 충돌 최소화
 - QA는 전 역할 `done` 확인 후 PR · 검증: `validate-status`
 
-프롬프트 생성: `dispatch-prompt` · **PR 전 검증:** `verify-dispatch` (브랜치 `feature/TB-{id}-*`)  
+오케스트레이션: `dispatch-plan TB-{id}` — 전 역할 프롬프트 + 상태 스켈레톤 생성 · 역할별 단건은 `dispatch-prompt`  
+PR 전: `collect-handoff TB-{id}` (전 역할 `done`+`verified` 게이트) · `verify-dispatch` (브랜치 `feature/TB-{id}-*`)  
 명령 예시: [examples/multi-agent-dispatch.md](./examples/multi-agent-dispatch.md)
 
 ## 샘플 앱 (TB-101)
@@ -90,6 +91,7 @@ branch protection: `validate`, `test` (권장)
 | validate-harness | `playbook.md` · 링크·mdc·필수 파일 |
 | validate-handoff | `handoff-schema.md` |
 | verify-dispatch | `feature/TB-{id}-*` 브랜치 |
+| collect-handoff | 전 역할 `done`+`verified` (`status-schema.md`) |
 | validate-todo-sync | `todo.md`에 티켓 등록 |
 | validate-commit-msg | 커밋 메시지에 `TB-{id}` |
 | run-eval | `first-ticket.md` · `presets/` |
