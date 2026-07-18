@@ -38,6 +38,7 @@ targets=(docs/harness/examples/contract-handoff.md)
 if [[ -d docs/harness/handoffs ]]; then
   while IFS= read -r f; do
     [[ "$(basename "$f")" == "README.md" ]] && continue
+    [[ "$(basename "$f")" == *-status.md ]] && continue   # status 파일은 validate-status 담당
     targets+=("$f")
   done < <(find docs/harness/handoffs -name '*.md' -type f 2>/dev/null | sort)
 fi

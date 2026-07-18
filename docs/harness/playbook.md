@@ -37,9 +37,17 @@
 | 1 | `[TB-xxx][Role]` 태그 + 범위(globs) + DoD를 프롬프트에 명시 |
 | 2 | Contract 먼저 · Backend/Frontend 병렬 가능 · QA 마지막 |
 | 3 | 산출물: Contract는 `handoff-schema.md` 형식 핸드오프 |
-| 4 | 서브에이전트 종료 시 산출물 경로·검증 결과를 메인에 전달 |
+| 4 | 종료 시 `TB-{id}-status.md`에 자기 역할 status·산출물·검증 결과 append (구두 전달 대체) |
 
 병렬 티켓은 worktree 1개/티켓. 한 worktree 내 Backend·Frontend만 병렬 디스패치.
+
+## 상태 채널
+
+역할 간 비동기 인계는 커밋되는 상태 파일로 한다 — "메인에 구두 전달" 대신 다른 인스턴스·세션이 파일로 진행 상황을 인지한다.
+
+- 파일: `docs/harness/handoffs/TB-{id}-status.md` · 스키마: `status-schema.md` · 예시: `examples/status-example.md`
+- 각 역할은 **자기 행만** append (`status`: `todo`/`in_progress`/`done`/`blocked`) → 머지 충돌 최소화
+- QA는 전 역할 `done` 확인 후 PR · 검증: `validate-status`
 
 프롬프트 생성: `dispatch-prompt` · **PR 전 검증:** `verify-dispatch` (브랜치 `feature/TB-{id}-*`)  
 명령 예시: [examples/multi-agent-dispatch.md](./examples/multi-agent-dispatch.md)

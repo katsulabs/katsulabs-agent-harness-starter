@@ -26,6 +26,7 @@ record() {
 
 bash ./scripts/validate-harness.sh; record 'validate-harness' $? 'validate-harness 실패'
 bash ./scripts/validate-handoff.sh; record 'validate-handoff' $? 'validate-handoff 실패'
+bash ./scripts/validate-status.sh; record 'validate-status' $? 'validate-status 실패'
 bash ./scripts/run-agent-eval.sh; record 'agent-eval' $? 'agent-eval 실패'
 
 bash ./scripts/run-agent-llm-eval.sh; record 'agent-llm-eval' $? 'agent-llm-eval 실패'
@@ -35,9 +36,10 @@ bash ./scripts/score-agent-llm.sh; record 'score-agent-llm' $? 'score-agent-llm 
 bash ./scripts/verify-dispatch.sh; record 'verify-dispatch' $? 'verify-dispatch 실패'
 
 for f in eval/agent-smoke.checklist.md docs/harness/handoff-schema.md docs/harness/mcp-setup.md \
-  scripts/validate-handoff.sh scripts/run-agent-eval.sh scripts/run-agent-llm-eval.sh \
+  scripts/validate-handoff.sh scripts/validate-status.sh scripts/run-agent-eval.sh scripts/run-agent-llm-eval.sh \
   scripts/score-agent-llm.sh scripts/cost-summary.sh scripts/verify-dispatch.sh \
   scripts/dispatch-prompt.sh scripts/summarize-eval.sh \
+  docs/harness/status-schema.md docs/harness/examples/status-example.md \
   sample/package.json .cursor/skills/dispatch/SKILL.md; do
   if [[ -f "$f" ]]; then record "artifact:$f" 0 ok; else record "artifact:$f" 1 "MISSING: $f"; fi
 done

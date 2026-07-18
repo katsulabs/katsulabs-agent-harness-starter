@@ -8,6 +8,7 @@
 | `validate-harness -Pr` | PR 직전 | + dispatch · todo · commit-msg |
 | `run-eval` | 티켓·CI | 앱/sample 테스트 + harness-smoke |
 | `validate-handoff` | handoff 변경 | frontmatter·섹션 |
+| `validate-status` | 상태 채널 변경 | frontmatter·역할 상태 표 |
 | `validate-staged-handoff` | pre-commit | staged handoff만 |
 | `dispatch-prompt` | 티켓 착수 | 서브에이전트 프롬프트 |
 | `verify-dispatch` | PR | `feature/TB-{id}-*` 브랜치 |
