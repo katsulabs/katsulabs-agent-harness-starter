@@ -167,6 +167,8 @@ foreach ($f in @(
     'eval/agent-smoke.checklist.md', 'eval/reports/README.md',
     'docs/harness/handoff-schema.md', 'docs/harness/mcp-setup.md',
     'scripts/validate-handoff.ps1', 'scripts/validate-handoff.sh',
+    'scripts/validate-status.ps1', 'scripts/validate-status.sh',
+    'docs/harness/status-schema.md', 'docs/harness/examples/status-example.md',
     'scripts/run-agent-eval.ps1', 'scripts/run-agent-eval.sh',
     'scripts/dispatch-prompt.ps1', 'scripts/dispatch-prompt.sh',
     'scripts/summarize-eval.ps1', 'scripts/summarize-eval.sh',

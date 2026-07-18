@@ -31,6 +31,10 @@ Add-Check 'validate-harness' ($LASTEXITCODE -eq 0) 'validate-harness 실패'
 & pwsh -NoProfile -File (Join-Path $root 'scripts/validate-handoff.ps1')
 Add-Check 'validate-handoff' ($LASTEXITCODE -eq 0) 'validate-handoff 실패'
 
+# 2b. status 린터
+& pwsh -NoProfile -File (Join-Path $root 'scripts/validate-status.ps1')
+Add-Check 'validate-status' ($LASTEXITCODE -eq 0) 'validate-status 실패'
+
 # 3. agent-eval 프록시
 & pwsh -NoProfile -File (Join-Path $root 'scripts/run-agent-eval.ps1')
 Add-Check 'agent-eval' ($LASTEXITCODE -eq 0) 'agent-eval 실패'
@@ -50,6 +54,9 @@ foreach ($f in @(
     'docs/harness/handoff-schema.md',
     'docs/harness/mcp-setup.md',
     'scripts/validate-handoff.ps1',
+    'scripts/validate-status.ps1',
+    'docs/harness/status-schema.md',
+    'docs/harness/examples/status-example.md',
     'scripts/run-agent-eval.ps1',
     'scripts/dispatch-prompt.ps1',
     'scripts/summarize-eval.ps1',

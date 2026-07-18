@@ -4,7 +4,7 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| — | — | 활성 티켓 없음 |
+| TB-022 | 진행 | 공유 상태 채널: status-schema·예시, validate-status 린터 (.sh+.ps1), playbook 구두전달→상태파일, harness-smoke·매니페스트 반영, validate-harness -Pr + run-eval PASS |
 
 ## 완료
 
