@@ -4,7 +4,7 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| — | — | 활성 티켓 없음 |
+| TB-026 | 진행 | .gitignore에 .DS_Store 추가, validate-harness -Pr PASS |
 
 ## 완료
 
