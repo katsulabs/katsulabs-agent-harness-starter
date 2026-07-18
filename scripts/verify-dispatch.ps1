@@ -11,6 +11,8 @@ param([string]$Ticket)
 
 $ErrorActionPreference = 'Stop'
 $branch = (git branch --show-current 2>$null)
+# CI detached-HEAD(pull_request) 폴백: GitHub Actions 브랜치 환경변수 사용
+if (-not $branch) { $branch = if ($env:GITHUB_HEAD_REF) { $env:GITHUB_HEAD_REF } else { $env:GITHUB_REF_NAME } }
 if (-not $branch) {
     Write-Host 'FAIL: git branch 확인 불가'
     exit 1
