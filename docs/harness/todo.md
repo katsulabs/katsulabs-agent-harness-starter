@@ -4,7 +4,7 @@
 
 | 티켓 | 상태 | DoD |
 |------|------|-----|
-| — | — | 활성 티켓 없음 |
+| TB-027 | 진행 | 루트 README에 멀티에이전트 섹션 추가(관심사→장치 표 + introduction·status-schema 링크), validate-harness -Pr PASS |
 
 ## 완료
 

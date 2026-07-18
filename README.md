@@ -25,6 +25,20 @@ Cursor에게 **누가·무엇을·어떤 순서로·어떤 검증 후** 일할�
 
 ---
 
+## 멀티에이전트
+
+여러 인스턴스·서브에이전트를 병렬로 운영할 때의 안전·인계·조정 장치가 내장되어 있다.
+
+| 관심사 | 장치 |
+|--------|------|
+| 동시 실행 안전 | 티켓별 worktree 격리 · eval 산출물 `eval/reports/TB-{id}/` |
+| 협업 인계 | 커밋되는 상태 채널 `TB-{id}-status.md` (`validate-status`) |
+| 작업 조정 | `dispatch-plan` → 역할 병렬 → `collect-handoff` (PR 전 게이트) |
+
+상세: [introduction.md](docs/harness/introduction.md) 멀티에이전트 섹션 · [status-schema.md](docs/harness/status-schema.md)
+
+---
+
 ## Day 1 검증
 
 **PowerShell 7.4+** (`pwsh`):
