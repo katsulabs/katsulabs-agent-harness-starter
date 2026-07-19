@@ -164,6 +164,7 @@ validate-harness, run-eval, CI
 
 | 문서·도구 | 용도 |
 |-----------|------|
+| [multi-agent-walkthrough.md](./multi-agent-walkthrough.md) | dispatch-plan→collect-handoff 실행 walkthrough |
 | [sample-ticket-code.md](./sample-ticket-code.md) | TB-101 단계 요약 |
 | [contract-handoff.md](./contract-handoff.md) | 핸드오프 예시 |
 | `.cursor/skills/dispatch/SKILL.md` | 디스패치 절차 |
