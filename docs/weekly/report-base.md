@@ -1,8 +1,9 @@
-<!-- 주간 보고 표준 v1.4 — 원본: katsulabs-agent-harness-starter/docs/weekly/report-base.md. 저장소에서 고치지 말고 원본을 고친 뒤 복사한다. -->
-## 공통 규칙 (주간 보고 표준 v1.4)
+<!-- 주간 보고 표준 v1.5 — 원본: katsulabs-agent-harness-starter/docs/weekly/report-base.md. 저장소에서 고치지 말고 원본을 고친 뒤 복사한다. -->
+## 공통 규칙 (주간 보고 표준 v1.5)
 
 ### 산출물
 - `{{OUT}}/summary.html`(항상), `{{OUT}}/detail.html`(변경이 있을 때만). 두 문서는 상대 경로(`summary.html`, `detail.html`)로 서로 링크한다.
+- 제목은 `<저장소> 주간 보고 · <기간>`. 기간은 `{{START}} ~ {{END}}`에서 연도가 같으면 끝 날짜의 연도를 뺀다(예: `2026-10-12 ~ 10-18`). detail.html은 같은 제목 뒤에 ` — 상세`를 붙인다.
 - `scripts/weekly/template.html`의 뼈대와 CSS를 그대로 쓴다. `sample-summary.html`, `sample-detail.html`은 형식·문체 예시이고 내용은 복사하지 않는다.
 - 지난 보고서가 있으면 그 summary.html을 읽어 이미 보고한 항목은 다시 쓰지 않는다.
 - 보고 대상은 기간({{START}}~{{END}}) 안에 일어난 일만이다. 기간 밖(보고서를 만드는 날 이후의 작업, 보고 도구·표준·자동화 자체를 손본 작업 포함)은 ①②③ 어디에도 쓰지 않는다. 미push 커밋 수처럼 현재 상태를 세는 항목에서도 기간 밖 커밋의 내용은 설명하지 않고 개수만 쓴다. 기간 안 변경이라도 아직 반영되지 않았거나 상태가 바뀔 수 있는 것은 "보고서를 만든 시점 기준"이라고 밝힌다.
