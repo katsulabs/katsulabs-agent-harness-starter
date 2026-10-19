@@ -1,0 +1,61 @@
+<!-- 주간 보고 HTML 뼈대. 시스템 기본 글꼴만 쓴다 — 웹 폰트 링크 금지. -->
+<title>katsudrop {{WEEK_LABEL}}</title>
+<style>
+:root{
+  --ground:#fafbfa; --surface:#ffffff; --ink:#1c2023; --muted:#5b6469; --faint:#8a9398;
+  --line:#e1e5e4; --tint:#f1f3f2; --accent:#9a5b0e; --accent-bg:#fbf1e1;
+  --ok:#2f7a4b; --ok-bg:#e7f3eb;
+  --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--ground:#141719;--surface:#1b1f21;--ink:#e5e8e9;--muted:#a0a9ad;--faint:#78828a;
+  --line:#2d3337;--tint:#202528;--accent:#e2a857;--accent-bg:#2c2418;--ok:#7cc59a;--ok-bg:#1c2b22;}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--ground:#141719;--surface:#1b1f21;--ink:#e5e8e9;--muted:#a0a9ad;--faint:#78828a;
+  --line:#2d3337;--tint:#202528;--accent:#e2a857;--accent-bg:#2c2418;--ok:#7cc59a;--ok-bg:#1c2b22;}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:15px/1.7 var(--sans);-webkit-font-smoothing:antialiased;padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:760px;margin:0 auto}
+header{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:8px}
+.kicker{font-size:13px;color:var(--muted);margin:0 0 6px}
+h1{font-size:26px;line-height:1.35;margin:0 0 12px;letter-spacing:-.01em;text-wrap:balance}
+h2{font-size:19px;margin:44px 0 10px;letter-spacing:-.005em;text-wrap:balance}
+h3{font-size:16px;margin:30px 0 6px}
+p{margin:0 0 12px}
+.lead{color:var(--ink);margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:16px 0 0;padding:0;list-style:none;font-size:13.5px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+code,.tb{font-family:var(--mono);font-size:.86em}
+.tb{color:var(--accent);white-space:nowrap}
+code{background:var(--tint);padding:1px 5px;border-radius:4px}
+figure{margin:18px 0 22px}
+figure img{display:block;width:100%;max-width:100%;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+figure.phone img{max-width:340px}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.note{font-size:13.5px;color:var(--muted);background:var(--tint);border-radius:6px;padding:10px 14px;margin:14px 0 4px}
+.scroll{overflow-x:auto;margin:10px 0 6px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:680px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;min-width:120px;border-bottom:1px solid var(--line);word-break:keep-all;overflow-wrap:anywhere}
+th{font-size:12.5px;font-weight:600;color:var(--muted)}
+th:first-child,td:first-child{min-width:84px;white-space:nowrap}
+ul{padding-left:20px;margin:6px 0 12px}
+li{margin:4px 0}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--faint)}
+@media (max-width:480px){body{font-size:14.5px;padding-block:28px 56px}h1{font-size:22px}}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="kicker">{{KICKER}}</p>
+  <h1>{{HEADLINE}}</h1>
+  <p class="lead">{{LEAD}}</p>
+  <ul class="meta">{{META_ITEMS}}</ul>
+</header>
+
+{{BODY}}
+
+<footer>{{FOOTER}}</footer>
+</div>
