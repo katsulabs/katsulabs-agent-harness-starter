@@ -1,0 +1,53 @@
+<!-- 월간 보고 HTML 뼈대. 시스템 기본 글꼴만 쓴다 — 웹 폰트 링크 금지. 구조와 규칙은 monthly-base.md. 아래 본문은 형식 예시이고 내용은 지운다. -->
+<title>katsulabs 월간 보고 · {{MONTH}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{--ground:#fafbfa;--surface:#fff;--ink:#1c2023;--muted:#5b6469;--faint:#8a9398;--line:#e1e5e4;--tint:#f1f3f2;--accent:#9a5b0e;--accent-bg:#fbf1e1;--ok:#2f7a4b;--ok-bg:#e7f3eb;--warn:#a23b2a;--warn-bg:#fbeae6;
+--sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#15181a;--surface:#1c2023;--ink:#e8ecea;--muted:#a3adb0;--faint:#78848a;--line:#2d3336;--tint:#23282b;--accent:#e0a458;--accent-bg:#2c2418;--ok:#6fbf8b;--ok-bg:#1c2b22;--warn:#e58a78;--warn-bg:#2d1d19;color-scheme:dark}}
+:root[data-theme="dark"]{--ground:#15181a;--surface:#1c2023;--ink:#e8ecea;--muted:#a3adb0;--faint:#78848a;--line:#2d3336;--tint:#23282b;--accent:#e0a458;--accent-bg:#2c2418;--ok:#6fbf8b;--ok-bg:#1c2b22;--warn:#e58a78;--warn-bg:#2d1d19;color-scheme:dark}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.6;font-size:15px;padding-block:24px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+h1{font-size:24px;margin:0 0 4px;text-wrap:balance}h2{font-size:18px;margin:30px 0 10px;text-wrap:balance}h3{font-size:15px;margin:18px 0 6px}
+.lede{color:var(--muted);margin:0 0 18px}a{color:var(--accent)}
+.muted{color:var(--muted)}.small{font-size:13px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.list{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:minmax(0,11.5em) minmax(0,1fr) auto;gap:6px 16px;align-items:baseline}
+.row .per{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.row .hd{font-weight:600}.row .sub{color:var(--muted);font-size:13px;grid-column:2}
+.row .lk{display:flex;gap:10px;font-size:14px;white-space:nowrap}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;background:var(--tint);color:var(--muted);margin-left:6px;font-weight:500}
+.tag.live{background:var(--ok-bg);color:var(--ok)}
+.scroll{overflow-x:auto}table{border-collapse:collapse;min-width:560px;width:100%}th,td{text-align:left;vertical-align:top;padding:8px 12px;border-bottom:1px solid var(--line);font-size:14px}th{background:var(--tint);font-weight:600;font-size:13px;color:var(--muted)}
+.tabs{display:flex;gap:6px;margin:16px 0 4px;flex-wrap:wrap}.tabs button{font:inherit;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 16px;border-radius:99px;cursor:pointer}.tabs button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:var(--ground)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}.grid>*{min-width:0}
+ul{padding-left:1.2em;margin:6px 0}li{margin:3px 0}
+.pill{display:inline-block;font-size:12px;padding:0 7px;border-radius:6px;background:var(--accent-bg);color:var(--accent);font-family:var(--mono)}
+.note{border-left:3px solid var(--accent);background:var(--accent-bg);padding:8px 12px;border-radius:0 8px 8px 0;font-size:14px;margin:12px 0}
+footer{margin-top:36px;color:var(--faint);font-size:12px}
+@media(max-width:640px){.row{grid-template-columns:1fr}.row .sub{grid-column:1}}
+</style>
+<div class="wrap">
+<h1>katsulabs 월간 보고 · {{MONTH}}</h1>
+<p class="lede">(한 줄: 이 달에 가장 크게 바뀐 것. 근거는 주간 보고서라는 점과 현재 상태를 다시 확인하지 않았다는 점을 밝힌다.)</p>
+
+<h2>한눈에</h2>
+<div class="scroll card"><table><thead><tr><th>저장소</th><th>보고 범위</th><th>주별 변경 규모(기록 기준, 합산하지 않음)</th><th>자동 테스트 기록</th></tr></thead><tbody>
+<tr><td><b>저장소</b></td><td>MM-DD ~ MM-DD (N주)</td><td>주1 → 주2</td><td>주1 → 주2</td></tr>
+</tbody></table></div>
+<p class="small muted">(빠진 주, 소급 생성 주, 세는 단위가 달라 합계를 내지 않은 이유)</p>
+
+<h2>저장소 이름</h2>
+<div class="grid">
+<section class="card"><h3 style="margin-top:0">MM-DD ~ MM-DD · 그 주의 주제</h3><ul><li>변경 한 줄 <span class="pill">TB-000</span></li></ul></section>
+</div>
+
+<h2>월말 시점에 열려 있던 과제</h2>
+<div class="note">각 주간 보고의 ③ 기준입니다. 이 문서를 만든 시점의 현재 상태는 다시 확인하지 않았습니다.</div>
+<div class="grid">
+<section class="card"><h3 style="margin-top:0">저장소 이름</h3><ul><li>과제 한 줄</li></ul></section>
+</div>
+<p class="small">주간 원문: (저장소별 주간 보고 폴더 경로)</p>
+<footer>생성 YYYY-MM-DD · 근거: 각 저장소 주간 보고서(기간)</footer>
+</div>
