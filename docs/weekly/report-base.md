@@ -1,5 +1,5 @@
-<!-- 주간 보고 표준 v1.2 — 원본: katsulabs-agent-harness-starter/docs/weekly/report-base.md. 저장소에서 고치지 말고 원본을 고친 뒤 복사한다. -->
-## 공통 규칙 (주간 보고 표준 v1.2)
+<!-- 주간 보고 표준 v1.3 — 원본: katsulabs-agent-harness-starter/docs/weekly/report-base.md. 저장소에서 고치지 말고 원본을 고친 뒤 복사한다. -->
+## 공통 규칙 (주간 보고 표준 v1.3)
 
 ### 산출물
 - `{{OUT}}/summary.html`(항상), `{{OUT}}/detail.html`(변경이 있을 때만). 두 문서는 상대 경로(`summary.html`, `detail.html`)로 서로 링크한다.
